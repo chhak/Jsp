@@ -3,12 +3,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>3-7</title>
+<title>3-8</title>
 </head>
 <body>
-	<h3>7.redirect 페이지</h3>
+	<h3>8.forward 페이지</h3>
 	<%
-		response.sendRedirect("./3-2.jsp");
+		pageContext.forward("./3-2.jsp");
 	%>
 </body>
 </html>
