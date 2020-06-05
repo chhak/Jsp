@@ -50,6 +50,13 @@
 <head>
 <meta charset="UTF-8">
 <title>list</title>
+<script>
+	function onDelete(){
+		var result = confirm("정말 삭제하시겠습니까?");
+		return result;
+	}
+</script>
+
 </head>
 <body>
 	<h3>직원목록</h3>
@@ -64,17 +71,17 @@
 			<th>입사일</th>
 			<th>기타</th>
 		</tr>
-		<% for(int i=0 ; i<memberList.size() ; i++){ %>
+		<% for(MemberBean mb : memberList){ %>
 		<tr>
-			<td><%= memberList.get(i).getUid() %></td>
-			<td><%= memberList.get(i).getName() %></td>
-			<td><%= memberList.get(i).getHp() %></td>
-			<td><%= memberList.get(i).getPos() %></td>
-			<td><%= memberList.get(i).getDep() %></td>
-			<td><%= memberList.get(i).getRdate().substring(0, 10) %></td>
+			<td><%= mb.getUid() %></td>
+			<td><%= mb.getName() %></td>
+			<td><%= mb.getHp() %></td>
+			<td><%= mb.getPos() %></td>
+			<td><%= mb.getDep() %></td>
+			<td><%= mb.getRdate().substring(0, 10) %></td>
 			<td>
-				<a href="#">삭제</a>
-				<a href="#">수정</a>
+				<a href="./delete.jsp" onclick="return onDelete()">삭제</a>
+				<a href="./modifyForm.jsp?uid=<%= mb.getUid() %>">수정</a>
 			</td>
 		</tr>
 		<% } %>
