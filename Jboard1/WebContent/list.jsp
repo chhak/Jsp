@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>글목록</title>
-    <link rel="stylesheet" href="./css/style.css">    
+    <link rel="stylesheet" href="/Jboard1/css/style.css">    
 </head>
 <body>
     <div id="wrapper">
@@ -13,7 +13,7 @@
             <article>
                 <p>
 					홍길동님 반갑습니다.
-                    <a href="./user/login.html" class="logout">[로그아웃]</a>
+                    <a href="/Jboard1/user/proc/logout.jsp" class="logout">[로그아웃]</a>
                 </p>
                 <table border="0">
                     <tr>
