@@ -15,6 +15,7 @@
 	String zip   = request.getParameter("zip");
 	String addr1 = request.getParameter("addr1");
 	String addr2 = request.getParameter("addr2");
+	String regip = request.getRemoteAddr();
 	
 	// DB정보
 	String host = "jdbc:mysql://192.168.44.46:3306/chhak";
@@ -32,21 +33,31 @@
 	
 	// 4단계
 	String sql  = "INSERT INTO `JBOARD_MEMBER` SET ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
-		   sql += "``='', ";
+		   sql += "`uid`='"+uid+"', ";
+		   sql += "`pass`=PASSWORD('"+pass1+"'), ";
+		   sql += "`name`='"+name+"', ";
+		   sql += "`nick`='"+nick+"', ";
+		   sql += "`email`='"+email+"', ";
+		   sql += "`hp`='"+hp+"', ";		   
+		   sql += "`zip`='"+zip+"', ";
+		   sql += "`addr1`='"+addr1+"', ";
+		   sql += "`addr2`='"+addr2+"', ";
+		   sql += "`regip`='"+regip+"', ";
+		   sql += "`rdate`=NOW()";
+	
+	stmt.executeUpdate(sql);
 	
 	// 5단계
 	// 6단계
+	stmt.close();
+	conn.close();
 	
 	// 리다이렉트
+	response.sendRedirect("/Jboard1/user/login.jsp");	
 %>
+
+
+
+
+
+
