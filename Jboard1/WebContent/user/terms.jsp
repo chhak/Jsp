@@ -1,3 +1,4 @@
+<%@page import="kr.co.jboard1.bean.TermsBean"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -23,12 +24,11 @@
 	ResultSet rs = stmt.executeQuery(sql);
 	
 	// 5단계
-	String terms = null;
-	String privacy = null;
+	TermsBean tb = new TermsBean();
 	
 	if(rs.next()){
-		terms   = rs.getString(1);
-		privacy = rs.getString(2);
+		tb.setTerms(rs.getString(1));
+		tb.setPrivacy(rs.getString(2));
 	}
 	
 	// 6단계
@@ -50,7 +50,7 @@
                 <caption>사이트 이용약관</caption>
                 <tr>
                     <td>
-                        <textarea readonly><%= terms %></textarea>
+                        <textarea readonly><%= tb.getTerms() %></textarea>
                         <p>
                             <label><input type="checkbox" name="chk1"/>동의합니다.</label>
                         </p>
@@ -61,7 +61,7 @@
                 <caption>개인정보 취급방침</caption>
                 <tr>
                     <td>
-                        <textarea readonly><%= privacy %></textarea>
+                        <textarea readonly><%= tb.getPrivacy() %></textarea>
                         <p>
                             <label><input type="checkbox" name="chk2"/>동의합니다.</label>
                         </p>
@@ -69,8 +69,8 @@
                 </tr>
             </table>
             <div>
-                <a href="./login.html">취소</a>
-                <a href="./register.html">다음</a>
+                <a href="/Jboard1/user/login.jsp">취소</a>
+                <a href="/Jboard1/user/register.jsp">다음</a>
             </div>
         </section>
     </div>
