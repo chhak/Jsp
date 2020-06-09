@@ -1,4 +1,54 @@
+<%@page import="kr.co.jboard1.bean.ArticleBean"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="kr.co.jboard1.config.SQL"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="kr.co.jboard1.config.DBConfig"%>
+<%@page import="kr.co.jboard1.bean.MemberBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	//세션체크 및 사용자 정보객체 구하기
+	MemberBean mb = (MemberBean) session.getAttribute("member");
+		
+	if(mb == null){		
+		response.sendRedirect("/Jboard1/user/login.jsp");
+	}
+	
+	request.setCharacterEncoding("utf-8");	
+	String seq = request.getParameter("seq");
+	
+	// 1, 2단계
+	Connection conn = DBConfig.getConnection();
+	
+	// 3단계
+	PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_ARTICLE);
+	psmt.setString(1, seq);
+	
+	// 4단계
+	ResultSet rs = psmt.executeQuery();
+	
+	// 5단계
+	ArticleBean article = new ArticleBean();
+	
+	if(rs.next()){		
+		article.setSeq(rs.getInt(1));
+		article.setParent(rs.getInt(2));
+		article.setComment(rs.getInt(3));
+		article.setCate(rs.getString(4));
+		article.setTitle(rs.getString(5));
+		article.setContent(rs.getString(6));
+		article.setFile(rs.getInt(7));
+		article.setHit(rs.getInt(8));
+		article.setUid(rs.getString(9));
+		article.setRegip(rs.getString(10));
+		article.setRdate(rs.getString(11));
+	}
+	
+	// 6단계
+	rs.close();
+	psmt.close();
+	conn.close();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +63,9 @@
             <table>
                 <tr>
                     <td>제목</td>
-                    <td><input type="text" name="title" value="제목입니다." readonly/></td>
+                    <td><input type="text" name="title" value="<%= article.getTitle() %>" readonly/></td>
                 </tr>
+                <% if(article.getFile() == 1){ %>
                 <tr>
                     <td>첨부파일</td>
                     <td>
@@ -22,17 +73,18 @@
                         <span>7회 다운로드</span>
                     </td>
                 </tr>
+                <% } %>
                 <tr>
                     <td>내용</td>
                     <td>
-                        <textarea name="content" readonly>내용 샘플입니다.</textarea>
+                        <textarea name="content" readonly><%= article.getContent() %></textarea>
                     </td>
                 </tr>
             </table>
             <div>
                 <a href="#" class="btnDelete">삭제</a>
-                <a href="./modify.html" class="btnModify">수정</a>
-                <a href="./list.html" class="btnList">목록</a>
+                <a href="#" class="btnModify">수정</a>
+                <a href="/Jboard1/list.jsp" class="btnList">목록</a>
             </div>  
             
             <!-- 댓글리스트 -->

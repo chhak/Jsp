@@ -41,6 +41,7 @@
 		article.setUid(rs.getString(9));
 		article.setRegip(rs.getString(10));
 		article.setRdate(rs.getString(11));
+		article.setNick(rs.getString(12));
 		
 		articles.add(article);
 	}
@@ -64,7 +65,7 @@
             <h3>글목록</h3>
             <article>
                 <p>
-					홍길동님 반갑습니다.
+					<%= mb.getNick() %>님 반갑습니다.
                     <a href="/Jboard1/user/proc/logout.jsp" class="logout">[로그아웃]</a>
                 </p>
                 <table border="0">
@@ -78,8 +79,8 @@
                     <% for(ArticleBean article : articles){ %>
                     <tr>
                         <td><%= article.getSeq() %></td>
-                        <td><a href="./view.html"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
-                        <td><%= article.getUid() %></td>
+                        <td><a href="/Jboard1/view.jsp?seq=<%= article.getSeq() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
+                        <td><%= article.getNick() %></td>
                         <td><%= article.getRdate().substring(2, 10) %></td>
                         <td><%= article.getHit() %></td>
                     </tr>
