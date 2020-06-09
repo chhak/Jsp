@@ -14,6 +14,7 @@
 		
 	if(mb == null){		
 		response.sendRedirect("/Jboard1/user/login.jsp");
+		return; // 아래 로직실행을 못하게 프로그램을 여기서 종료 
 	}
 	
 	// 1, 2단계

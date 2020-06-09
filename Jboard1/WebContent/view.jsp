@@ -21,10 +21,14 @@
 	Connection conn = DBConfig.getConnection();
 	
 	// 3단계
+	PreparedStatement psmtHit = conn.prepareStatement(SQL.UPDATE_HIT);
+	psmtHit.setString(1, seq);
+	
 	PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_ARTICLE);
 	psmt.setString(1, seq);
 	
 	// 4단계
+	psmtHit.executeUpdate();
 	ResultSet rs = psmt.executeQuery();
 	
 	// 5단계
@@ -45,7 +49,8 @@
 	}
 	
 	// 6단계
-	rs.close();
+	psmtHit.close();
+	rs.close();	
 	psmt.close();
 	conn.close();
 %>
@@ -81,8 +86,20 @@
                     </td>
                 </tr>
             </table>
+            <script>
+            	
+            	function onDelete(){
+            		var result = confirm("정말 삭제하시겠습니까?");
+            		if(result){
+            			return true;
+            		}else{
+            			return false;
+            		}            		
+            	}
+            	
+            </script>
             <div>
-                <a href="#" class="btnDelete">삭제</a>
+                <a href="/Jboard1/proc/delete.jsp?seq=<%= article.getSeq() %>" onclick="return onDelete()" class="btnDelete">삭제</a>
                 <a href="#" class="btnModify">수정</a>
                 <a href="/Jboard1/list.jsp" class="btnList">목록</a>
             </div>  
@@ -101,9 +118,7 @@
                         <a href="#">수정</a>
                     </div>
                 </article>
-                <p class="empty">
-                    등록된 댓글이 없습니다.
-                </p>
+                <p class="empty">등록된 댓글이 없습니다.</p>
             </section>
 
             <!-- 댓글입력폼 -->
