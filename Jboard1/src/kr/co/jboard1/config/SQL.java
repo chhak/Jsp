@@ -3,6 +3,10 @@ package kr.co.jboard1.config;
 public class SQL {
 
 	// 회원 관련
+	
+	
+	
+	
 	// 게시물 관련
 	public final static String DELETE_ARTICLE = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=?";
 	public final static String UPDATE_HIT = "UPDATE `JBOARD_ARTICLE` SET `hit`=`hit`+1 WHERE `seq`=?";
