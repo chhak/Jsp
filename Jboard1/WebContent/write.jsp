@@ -11,7 +11,7 @@
         <section id="board" class="write">
             <h3>글쓰기</h3>
             <article>
-                <form action="#">
+                <form action="/Jboard1/proc/write.jsp">
                     <table>
                         <tr>
                             <td>제목</td>
@@ -30,7 +30,7 @@
                     </table>
                     <div>
                         <a href="./list.html" class="btnCancel">취소</a>
-                        <input type="submit"  class="btnWrite" value="작성완료">
+                        <input type="submit"  class="btnWrite" value="작성완료"/>
                     </div>
                 </form>
             </article>
