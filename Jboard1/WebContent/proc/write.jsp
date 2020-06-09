@@ -9,12 +9,10 @@
 	// 파라미터 수신
 	request.setCharacterEncoding("utf-8");
 	
+	String uid     = request.getParameter("uid");
 	String title   = request.getParameter("title");
 	String content = request.getParameter("content");
 	String regip   = request.getRemoteAddr();
-	
-	// 세션에서 사용자 정보객체 구하기
-	MemberBean mb = (MemberBean) session.getAttribute("member");
 	
 	// 1, 2단계
 	Connection conn = DBConfig.getConnection();
@@ -23,7 +21,7 @@
 	PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
 	psmt.setString(1, title);
 	psmt.setString(2, content);
-	psmt.setString(3, mb.getUid());
+	psmt.setString(3, uid);
 	psmt.setString(4, regip);
 	
 	// 4단계

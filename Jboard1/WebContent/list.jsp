@@ -1,4 +1,56 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.co.jboard1.bean.ArticleBean"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="kr.co.jboard1.config.SQL"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="kr.co.jboard1.config.DBConfig"%>
+<%@page import="kr.co.jboard1.bean.MemberBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	//세션체크 및 사용자 정보객체 구하기
+	MemberBean mb = (MemberBean) session.getAttribute("member");
+		
+	if(mb == null){		
+		response.sendRedirect("/Jboard1/user/login.jsp");
+	}
+	
+	// 1, 2단계
+	Connection conn = DBConfig.getConnection();
+	
+	// 3단계
+	PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
+	
+	// 4단계
+	ResultSet rs = psmt.executeQuery();
+	
+	// 5단계 - 결과셋 처리
+	List<ArticleBean> articles = new ArrayList<>();
+	
+	while(rs.next()){
+		ArticleBean article = new ArticleBean();
+		article.setSeq(rs.getInt(1));
+		article.setParent(rs.getInt(2));
+		article.setComment(rs.getInt(3));
+		article.setCate(rs.getString(4));
+		article.setTitle(rs.getString(5));
+		article.setContent(rs.getString(6));
+		article.setFile(rs.getInt(7));
+		article.setHit(rs.getInt(8));
+		article.setUid(rs.getString(9));
+		article.setRegip(rs.getString(10));
+		article.setRdate(rs.getString(11));
+		
+		articles.add(article);
+	}
+	
+	
+	// 6단계
+	rs.close();
+	psmt.close();
+	conn.close();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,13 +75,15 @@
                         <th>날짜</th>
                         <th>조회</th>
                     </tr>
+                    <% for(ArticleBean article : articles){ %>
                     <tr>
-                        <td>1</td>
-                        <td><a href="./view.html">테스트 제목입니다.</a>&nbsp;[3]</td>
-                        <td>길동이</td>
-                        <td>20-05-12</td>
-                        <td>12</td>
+                        <td><%= article.getSeq() %></td>
+                        <td><a href="./view.html"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
+                        <td><%= article.getUid() %></td>
+                        <td><%= article.getRdate().substring(2, 10) %></td>
+                        <td><%= article.getHit() %></td>
                     </tr>
+                    <% } %>
                 </table>
             </article>
 
