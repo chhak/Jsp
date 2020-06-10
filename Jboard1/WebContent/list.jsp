@@ -17,12 +17,23 @@
 		return; // 아래 로직실행을 못하게 프로그램을 여기서 종료 
 	}
 	
+	// 파라미터 수신
+	request.setCharacterEncoding("utf-8");
+	String pg = request.getParameter("pg");
+	
+	if(pg == null){
+		pg = "1";
+	}
+	
 	// 페이지 관련 변수선언
 	int total = 0;
 	int lastPage = 0;
 	int listCount = 0;
-	int currentPg = 0;
-	int limitIdx  = 0;
+	int currentPg = Integer.parseInt(pg);
+	int limitIdx  = (currentPg - 1) * 10;
+	int groupCurrent = (int)Math.ceil(currentPg / 10.0);
+	int groupStart = (groupCurrent - 1) * 10 + 1;
+	int groupEnd = groupCurrent * 10;
 	
 	// 1, 2단계
 	Connection conn = DBConfig.getConnection();
@@ -38,7 +49,13 @@
 			lastPage = total / 10;
 		}else{
 			lastPage = total / 10 + 1;
-		}		
+		}
+		
+		if(groupEnd > lastPage){
+			groupEnd = lastPage;
+		}	
+		
+		listCount = total - limitIdx;		
 	}
 	
 	// 3단계
@@ -103,7 +120,7 @@
                     </tr>
                     <% for(ArticleBean article : articles){ %>
                     <tr>
-                        <td><%= article.getSeq() %></td>
+                        <td><%= listCount-- %></td>
                         <td><a href="/Jboard1/view.jsp?seq=<%= article.getSeq() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
                         <td><%= article.getNick() %></td>
                         <td><%= article.getRdate().substring(2, 10) %></td>
@@ -115,11 +132,17 @@
 
             <!-- 페이지 네비게이션 -->
             <div class="paging">
-                <a href="#" class="prev">이전</a>
-                <% for(int i=1 ; i<=lastPage ; i++){ %>
-                <a href="#" class="num"><%= i %></a>                
-                <% } %>                
-                <a href="#" class="next">다음</a>
+            	<% if(groupStart > 1){ %>
+                <a href="/Jboard1/list.jsp?pg=<%= groupStart - 1 %>" class="prev">이전</a>
+            	<% } %>
+            	
+                <% for(int i=groupStart ; i<=groupEnd ; i++){ %>
+                <a href="/Jboard1/list.jsp?pg=<%= i %>" class="num"><%= i %></a>                
+                <% } %>
+                
+                <% if(groupEnd < lastPage){ %>                
+                <a href="/Jboard1/list.jsp?pg=<%= groupEnd + 1 %>" class="next">다음</a>
+            	<% } %>
             </div>
 
             <!-- 글쓰기 버튼 -->
