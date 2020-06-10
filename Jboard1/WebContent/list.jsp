@@ -17,11 +17,33 @@
 		return; // 아래 로직실행을 못하게 프로그램을 여기서 종료 
 	}
 	
+	// 페이지 관련 변수선언
+	int total = 0;
+	int lastPage = 0;
+	int listCount = 0;
+	int currentPg = 0;
+	int limitIdx  = 0;
+	
 	// 1, 2단계
 	Connection conn = DBConfig.getConnection();
 	
+	// 전체 게시물 갯수 구하기
+	PreparedStatement psmtCount = conn.prepareStatement(SQL.SELECT_TOTAL_COUNT);
+	ResultSet rsCount = psmtCount.executeQuery();
+	
+	if(rsCount.next()){
+		total = rsCount.getInt(1);
+		
+		if(total % 10 == 0){
+			lastPage = total / 10;
+		}else{
+			lastPage = total / 10 + 1;
+		}		
+	}
+	
 	// 3단계
 	PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
+	psmt.setInt(1, limitIdx); // 1pg = 0, 2pg = 10, 3pg = 20...
 	
 	// 4단계
 	ResultSet rs = psmt.executeQuery();
@@ -49,6 +71,8 @@
 	
 	
 	// 6단계
+	rsCount.close();
+	psmtCount.close();
 	rs.close();
 	psmt.close();
 	conn.close();
@@ -92,9 +116,9 @@
             <!-- 페이지 네비게이션 -->
             <div class="paging">
                 <a href="#" class="prev">이전</a>
-                <a href="#" class="num current">1</a>                
-                <a href="#" class="num">2</a>                
-                <a href="#" class="num">3</a>                
+                <% for(int i=1 ; i<=lastPage ; i++){ %>
+                <a href="#" class="num"><%= i %></a>                
+                <% } %>                
                 <a href="#" class="next">다음</a>
             </div>
 

@@ -25,7 +25,7 @@
 	psmt.setString(2, comment);
 	psmt.setString(3, uid);
 	psmt.setString(4, regip);
-		
+
 	// 4단계
 	psmtUpdate.executeUpdate();
 	psmt.executeUpdate();
