@@ -137,7 +137,7 @@
             	<% } %>
             	
                 <% for(int i=groupStart ; i<=groupEnd ; i++){ %>
-                <a href="/Jboard1/list.jsp?pg=<%= i %>" class="num"><%= i %></a>                
+                <a href="/Jboard1/list.jsp?pg=<%= i %>" class="num <%= (currentPg == i) ? "current":"" %>"><%= i %></a>                
                 <% } %>
                 
                 <% if(groupEnd < lastPage){ %>                
