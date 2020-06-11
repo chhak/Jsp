@@ -27,6 +27,13 @@ public class SQL {
 												+ "`regip`=?, "
 												+ "`rdate`=NOW()";
 		   
+	
+	public final static String SELECT_COMMENTS = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
+												+ "JOIN `JBOARD_MEMBER` AS b "
+												+ "ON a.uid = b.uid "
+												+ "WHERE `parent`=? "
+												+ "ORDER BY `seq` ASC";
+	
 	public final static String INSERT_COMMENT = "INSERT INTO `JBOARD_ARTICLE` SET "
 												+ "`parent`=?, "
 												+ "`content`=?, "
