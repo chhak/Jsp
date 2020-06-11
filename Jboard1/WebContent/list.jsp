@@ -146,8 +146,9 @@
             </div>
 
             <!-- 글쓰기 버튼 -->
+            <% if(mb.getGrade() > 2){ %>
             <a href="/Jboard1/write.jsp" class="btnWrite">글쓰기</a>
-
+			<% } %>
         </section>
     </div>    
 </body>

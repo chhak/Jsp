@@ -126,8 +126,16 @@
             </script>
             
             <div>
+            
+            	<%
+            		if(mb.getUid().equals(article.getUid())){
+            	%>
                 <a href="/Jboard1/proc/delete.jsp?seq=<%= article.getSeq() %>" onclick="return onDelete()" class="btnDelete">삭제</a>
                 <a href="/Jboard1/modify.jsp" class="btnModify">수정</a>
+                <%
+                	}
+                %>
+                
                 <a href="/Jboard1/list.jsp" class="btnList">목록</a>
             </div>
             
@@ -142,8 +150,12 @@
                     </span>
                     <textarea name="comment" readonly><%= comment.getContent() %></textarea>
                     <div>
-                        <a href="#">삭제</a>
+                    	<%
+            				if(mb.getUid().equals(comment.getUid())){
+            			%>
+                        <a href="/Jboard1/proc/deleteComment.jsp?seq=<%= comment.getSeq() %>">삭제</a>
                         <a href="#">수정</a>
+                        <% } %>
                     </div>
                 </article>
                 <% 

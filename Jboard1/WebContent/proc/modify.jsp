@@ -30,3 +30,8 @@
 	// 리다이렉트
 	response.sendRedirect("/Jboard1/view.jsp?seq="+seq);
 %>
+
+
+
+
+
