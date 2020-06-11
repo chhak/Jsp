@@ -7,6 +7,9 @@ public class SQL {
 	// 게시물 관련
 	public final static String SELECT_TOTAL_COUNT = "SELECT COUNT(`seq`) FROM `JBOARD_ARTICLE` WHERE `parent`=0";
 	
+	public final static String UPDATE_ARTICLE = "UPDATE `JBOARD_ARTICLE` SET `title`=?, `content`=? "
+												+ "WHERE `seq`=?";
+	
 	public final static String DELETE_ARTICLE = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=?";
 	public final static String UPDATE_HIT     = "UPDATE `JBOARD_ARTICLE` SET `hit`=`hit`+1 WHERE `seq`=?";
 	
@@ -25,8 +28,7 @@ public class SQL {
 												+ "`content`=?, "
 												+ "`uid`=?, "
 												+ "`regip`=?, "
-												+ "`rdate`=NOW()";
-		   
+												+ "`rdate`=NOW()";		   
 	
 	public final static String SELECT_COMMENTS = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_MEMBER` AS b "
@@ -43,7 +45,6 @@ public class SQL {
 	
 	public final static String UPDATE_COMMENT_COUNT = "UPDATE `JBOARD_ARTICLE` SET `comment` = `comment` + 1 " 
 													+ "WHERE `seq`=?";
-	
 	
 }
 

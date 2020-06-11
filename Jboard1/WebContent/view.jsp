@@ -76,6 +76,9 @@
 	rs.close();	
 	psmt.close();
 	conn.close();
+	
+	// 수정을 대비하기 위한 article객체 세션에 저장
+	session.setAttribute("article", article);	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,11 +124,12 @@
             	}
             	
             </script>
+            
             <div>
                 <a href="/Jboard1/proc/delete.jsp?seq=<%= article.getSeq() %>" onclick="return onDelete()" class="btnDelete">삭제</a>
-                <a href="#" class="btnModify">수정</a>
+                <a href="/Jboard1/modify.jsp" class="btnModify">수정</a>
                 <a href="/Jboard1/list.jsp" class="btnList">목록</a>
-            </div>  
+            </div>
             
             <!-- 댓글리스트 -->
             <section class="commentList">
