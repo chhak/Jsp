@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.io.File"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -25,6 +26,31 @@
 	String fname   = mRequest.getFilesystemName("file");
 	String regip   = request.getRemoteAddr();
 	
+	// 1, 2단계
+	Connection conn = DBConfig.getConnection();
+	
+	// 3단계	
+	PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
+	psmt.setString(1, title);
+	psmt.setString(2, content);
+	psmt.setString(3, uid);
+	psmt.setString(4, regip);
+	
+	Statement stmt = conn.createStatement();
+	
+	
+	// 4단계
+	psmt.executeUpdate();
+	ResultSet rs = stmt.executeQuery(SQL.SELECT_ARTICLE_MAX_SEQ);
+	
+	// 5단계
+	int parent = 0;
+	
+	if(rs.next()){
+		parent = rs.getInt(1);
+	}
+	
+	
 	// 파일을 첨부했을 경우 파일명 코드화
 	if(fname != null){
 		
@@ -42,29 +68,21 @@
 		File newFile = new File(realPath+"/"+newName);
 		
 		oldFile.renameTo(newFile);
+		
+		// 3단계
+		PreparedStatement psmtFile = conn.prepareStatement(SQL.INSERT_FILE);
+		psmtFile.setInt(1, parent);
+		psmtFile.setString(2, fname);
+		psmtFile.setString(3, newName);
+		
+		// 4단계
+		psmtFile.executeUpdate();
+		psmtFile.close();
 	}
 	
-	
-	
-	/*
-	// 1, 2단계
-	Connection conn = DBConfig.getConnection();
-	
-	// 3단계
-	PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
-	psmt.setString(1, title);
-	psmt.setString(2, content);
-	psmt.setString(3, uid);
-	psmt.setString(4, regip);
-	
-	// 4단계
-	psmt.executeUpdate();
-	
-	// 5단계
-	// 6단계
+	// 6단계	
 	psmt.close();
 	conn.close();
-	*/
 	
 	// 리다이렉트
 	response.sendRedirect("/Jboard1/list.jsp");
