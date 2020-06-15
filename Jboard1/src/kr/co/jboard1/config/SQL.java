@@ -31,6 +31,7 @@ public class SQL {
 	public final static String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET "
 												+ "`title`=?, "
 												+ "`content`=?, "
+												+ "`file`=?, "
 												+ "`uid`=?, "
 												+ "`regip`=?, "
 												+ "`rdate`=NOW()";

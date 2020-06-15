@@ -26,6 +26,8 @@
 	String fname   = mRequest.getFilesystemName("file");
 	String regip   = request.getRemoteAddr();
 	
+	int hasFile = (fname != null) ? 1 : 0;
+	
 	// 1, 2단계
 	Connection conn = DBConfig.getConnection();
 	
@@ -33,11 +35,11 @@
 	PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
 	psmt.setString(1, title);
 	psmt.setString(2, content);
-	psmt.setString(3, uid);
-	psmt.setString(4, regip);
+	psmt.setInt(3, hasFile);	
+	psmt.setString(4, uid);
+	psmt.setString(5, regip);
 	
-	Statement stmt = conn.createStatement();
-	
+	Statement stmt = conn.createStatement();	
 	
 	// 4단계
 	psmt.executeUpdate();
