@@ -20,7 +20,7 @@
         <section id="board" class="write">
             <h3>글쓰기</h3>
             <article>
-                <form action="/Jboard1/proc/write.jsp">
+                <form action="/Jboard1/proc/write.jsp" method="post" enctype="multipart/form-data">
                 	<input type="hidden" name="uid" value="<%= mb.getUid() %>" />
                     <table>
                         <tr>

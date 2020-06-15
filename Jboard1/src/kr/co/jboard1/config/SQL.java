@@ -4,6 +4,8 @@ public class SQL {
 
 	// 회원 관련
 	
+	
+	
 	// 게시물 관련
 	public final static String SELECT_TOTAL_COUNT = "SELECT COUNT(`seq`) FROM `JBOARD_ARTICLE` WHERE `parent`=0";
 	
@@ -11,6 +13,7 @@ public class SQL {
 												+ "WHERE `seq`=?";
 	
 	public final static String DELETE_ARTICLE = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=? OR `parent`=?";
+	public final static String DELETE_COMMENT = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=?";
 	public final static String UPDATE_HIT     = "UPDATE `JBOARD_ARTICLE` SET `hit`=`hit`+1 WHERE `seq`=?";
 	
 	public final static String SELECT_ARTICLE = "SELECT * FROM `JBOARD_ARTICLE` "
