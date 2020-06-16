@@ -33,7 +33,32 @@
 <head>
     <meta charset="UTF-8">
     <title>약관</title>
-    <link rel="stylesheet" href="/Jboard1/css/style.css"/>    
+    <link rel="stylesheet" href="/Jboard1/css/style.css"/>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script>
+		
+		$(function(){
+			
+			var checkbox = $('input[type=checkbox]');
+			var nextBtn = $('.terms > div > a:eq(1)');
+				
+			nextBtn.click(function(){
+				
+				var chkTerms   = checkbox.eq(0).is(':checked');
+				var chkPrivacy = checkbox.eq(1).is(':checked');
+				
+				if(chkTerms && chkPrivacy){
+					return true;	
+				}else{
+					alert('동의 하셔야 합니다.');
+					return false;
+				}				
+			});			
+		});	
+	</script>    
+    
 </head>
 <body>
     <div id="wrapper">

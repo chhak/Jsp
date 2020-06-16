@@ -45,6 +45,7 @@
 
 	// 3) response 객체 파일내용 스트림작업
 	String realPath = request.getServletContext().getRealPath("/file");
+	
 	try{
 		File file = new File(realPath+"/"+newName);
 	
@@ -63,10 +64,9 @@
 		bis.close();
 		
 	}catch(Exception e){
-		response.sendRedirect("/Jboard1/error/fileNotFound.jsp?seq="+parent);
+		response.sendRedirect("/Jboard1/view.jsp?seq="+parent+"&download=fail");
 		return;
-	}
-	
+	}	
 %>
 
 

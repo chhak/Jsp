@@ -30,6 +30,9 @@
 	// 1, 2단계
 	Connection conn = DBConfig.getConnection();
 	
+	// 트랜젝션 시작(begin)
+	conn.setAutoCommit(false);
+	
 	// 3단계	
 	PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
 	psmt.setString(1, title);
@@ -79,6 +82,9 @@
 		psmtFile.executeUpdate();
 		psmtFile.close();
 	}
+	
+	// 트랜젝션 끝(실질적인 쿼리 실행)
+	conn.commit();
 	
 	// 6단계	
 	psmt.close();
