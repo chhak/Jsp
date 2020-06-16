@@ -44,6 +44,8 @@ public class SQL {
 											+ "`newName`=?, "
 											+ "`rdate`=NOW()";
 	
+	public final static String UPDATE_FILE_DOWN_COUNT = "UPDATE `JBOARD_FILE` SET `download`=`download`+1 WHERE `seq`=?";    
+	
 	
 	public final static String SELECT_COMMENTS = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_MEMBER` AS b "

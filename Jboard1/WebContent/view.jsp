@@ -109,11 +109,12 @@
                 <% 
                 if(article.getFile() == 1){
                 	FileBean fBean = article.getFileBean();
+                	session.setAttribute("fBean", fBean);
                 %>
                 <tr>
                     <td>첨부파일</td>
                     <td>
-                        <a href="#"><%= fBean.getOldName() %></a>
+                        <a href="/Jboard1/proc/download.jsp?seq=<%= fBean.getSeq() %>"><%= fBean.getOldName() %></a>
                         <span><%= fBean.getDownload() %>회 다운로드</span>
                     </td>
                 </tr>
