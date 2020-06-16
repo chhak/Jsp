@@ -25,7 +25,6 @@
 	String content = mRequest.getParameter("content");
 	String fname   = mRequest.getFilesystemName("file");
 	String regip   = request.getRemoteAddr();
-	
 	int hasFile = (fname != null) ? 1 : 0;
 	
 	// 1, 2단계
@@ -52,8 +51,7 @@
 		parent = rs.getInt(1);
 	}
 	
-	
-	// 파일을 첨부했을 경우 파일명 코드화
+	// 파일을 첨부했을 경우 파일명 코드화해서 저장
 	if(fname != null){
 		
 		// 파일명 만들기

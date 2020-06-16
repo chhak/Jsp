@@ -1,3 +1,4 @@
+<%@page import="kr.co.jboard1.bean.FileBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.jboard1.bean.ArticleBean"%>
@@ -40,6 +41,7 @@
 	
 	// 5단계
 	ArticleBean article = new ArticleBean();
+	FileBean fileBean = new FileBean();
 	
 	if(rs.next()){		
 		article.setSeq(rs.getInt(1));
@@ -53,8 +55,16 @@
 		article.setUid(rs.getString(9));
 		article.setRegip(rs.getString(10));
 		article.setRdate(rs.getString(11));
+		
+		fileBean.setSeq(rs.getInt(12));
+		fileBean.setParent(rs.getInt(13));
+		fileBean.setOldName(rs.getString(14));
+		fileBean.setNewName(rs.getString(15));
+		fileBean.setDownload(rs.getInt(16));
+		fileBean.setRdate(rs.getString(17));		
+		article.setFileBean(fileBean);
 	}
-	
+			
 	List<ArticleBean> comments = new ArrayList<>();
 	while(rsComment.next()){
 		ArticleBean comment = new ArticleBean();
@@ -96,12 +106,15 @@
                     <td>제목</td>
                     <td><input type="text" name="title" value="<%= article.getTitle() %>" readonly/></td>
                 </tr>
-                <% if(article.getFile() == 1){ %>
+                <% 
+                if(article.getFile() == 1){
+                	FileBean fBean = article.getFileBean();
+                %>
                 <tr>
                     <td>첨부파일</td>
                     <td>
-                        <a href="#">2020년 상반기 매출자료.xls</a>
-                        <span>7회 다운로드</span>
+                        <a href="#"><%= fBean.getOldName() %></a>
+                        <span><%= fBean.getDownload() %>회 다운로드</span>
                     </td>
                 </tr>
                 <% } %>
