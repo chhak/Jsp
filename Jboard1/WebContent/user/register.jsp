@@ -12,9 +12,7 @@
     <script src="/Jboard1/js/checkPassword.js"></script>
     <script src="/Jboard1/js/checkName.js"></script>
     <script src="/Jboard1/js/checkNick.js"></script>
-    <script>    	
- 		
-    </script>
+    <script src="/Jboard1/js/validation.js"></script>
 </head>
 <body>
     <div id="wrapper">

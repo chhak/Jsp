@@ -16,6 +16,7 @@ $(function(){
 		
 		if(pass1 != pass2){
 			$('.resultPass').css('color', 'red').text('비밀번호가 일치하지 않습니다.');
+			isPassOk = false;
 		}else{
 			$('.resultPass').css('color', 'green').text('비밀번호가 일치 합니다.');
 			isPassOk = true;
