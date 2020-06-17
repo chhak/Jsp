@@ -3,7 +3,7 @@ package kr.co.jboard1.config;
 public class SQL {
 
 	// 회원 관련
-	
+	public final static String SELECT_CHECK_UID = "SELECT COUNT(`uid`) FROM `JBOARD_MEMBER` WHERE `uid`=?";
 	
 	
 	// 게시물 관련
