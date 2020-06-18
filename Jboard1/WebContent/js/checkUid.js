@@ -32,12 +32,11 @@ $(document).ready(function(){
 			url: '/Jboard1/user/proc/checkUid.jsp',
 			type: 'get',
 			data: json,
-			dataType: 'json',
+			dataType: 'html',
 			success: function(data){
-				
-				if(data.result == 1){
+				if(data == 1){
 					$('.resultId').css('color', 'red').text('이미 사용 중인 아이디 입니다.');
-					tag.focus();
+					isUidOk = false;
 				}else{
 					$('.resultId').css('color', 'green').text('사용 하실 수 있는 아이디 입니다.');
 					isUidOk = true;

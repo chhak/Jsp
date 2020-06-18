@@ -4,7 +4,7 @@
 <%@page import="kr.co.jboard1.config.SQL"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="kr.co.jboard1.config.DBConfig"%>
-<%@ page contentType="application/json;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
 	String uid = request.getParameter("uid");
@@ -26,9 +26,9 @@
 	conn.close();
 	
 	// Json 생성
-	JsonObject json = new JsonObject();
-	json.addProperty("result", result);
+	//JsonObject json = new JsonObject();
+	//json.addProperty("result", result);
 	
 	// Json 출력
-	out.print(json);	
+	out.print(result);	
 %>
