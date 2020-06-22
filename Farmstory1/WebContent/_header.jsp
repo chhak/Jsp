@@ -11,9 +11,9 @@
         <header>
             <a href="/Farmstory1" class="logo"><img src="/Farmstory1/img/logo.png" alt="로고"/></a>
             <p>
-                <a href="#">HOME |</a>
-                <a href="#">회원가입 |</a>
-                <a href="#">로그인 |</a>
+                <a href="/Farmstory1">HOME |</a>
+                <a href="/Farmstory1/user/terms.jsp">회원가입 |</a>
+                <a href="/Farmstory1/user/login.jsp">로그인 |</a>
                 <a href="#">로그아웃 |</a>
                 <a href="#">고객센터</a>
             </p>
