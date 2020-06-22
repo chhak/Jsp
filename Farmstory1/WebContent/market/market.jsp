@@ -8,7 +8,7 @@
         <aside>
             <img src="../img/sub_aside_cate2_tit.png" alt="장보기"/>
             <ul>
-                <li class="on"><a href="#">장보기</a></li>
+                <li class="on"><a href="./market.jsp">장보기</a></li>
             </ul>
         </aside>
         <article>

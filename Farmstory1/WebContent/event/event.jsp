@@ -8,7 +8,7 @@
         <aside>
             <img src="../img/sub_aside_cate4_tit.png" alt="이벤트"/>
             <ul>
-                <li class="on"><a href="#">이벤트</a></li>
+                <li class="on"><a href="./event.jsp">이벤트</a></li>
             </ul>
         </aside>
         <article>
