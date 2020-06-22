@@ -8,7 +8,7 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/Farmstory1/js/zipcode.js"></script>
 <section id="user" class="register">
-    <form action="/Farmstory1/user/proc/register.jsp" method="POST">
+    <form action="/Farmstory1/user/proc/register.jsp" method="POST">	    
         <table border="1">
             <caption>사이트 이용정보 입력</caption>
             <tr>
@@ -81,10 +81,10 @@
             <a href="./login.jsp" class="btnCancel">취소</a>
             <input type="submit"   class="btnJoin" value="회원가입"/>
         </div>
-
     </form>
 </section>
 <%@ include file="../_footer.jsp" %>
+
 
 
 

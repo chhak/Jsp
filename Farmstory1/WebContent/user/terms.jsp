@@ -1,4 +1,32 @@
+<%@page import="kr.co.farmstory1.bean.TermsBean"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="kr.co.farmstory1.config.SQL"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="kr.co.farmstory1.config.DBConfig"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	// 1, 2단계
+	Connection conn = DBConfig.getConnection();
+	// 3단계
+	Statement stmt = conn.createStatement();
+	
+	// 4단계
+	ResultSet rs = stmt.executeQuery(SQL.SELECT_TERMS);
+	
+	// 5단계
+	TermsBean tb = new TermsBean();
+	
+	if(rs.next()){
+		tb.setTerms(rs.getString(1));
+		tb.setPrivacy(rs.getString(2));
+	}
+	
+	// 6단계
+	rs.close();
+	stmt.close();
+	conn.close();
+%>
 <%@ include file="../_header.jsp" %>
 <script>		
 	$(function(){
@@ -25,7 +53,7 @@
         <caption>사이트 이용약관</caption>
         <tr>
             <td>
-                <textarea readonly></textarea>
+                <textarea readonly><%= tb.getTerms() %></textarea>
                 <p>
                     <label><input type="checkbox" name="chk1"/>동의합니다.</label>
                 </p>
@@ -36,7 +64,7 @@
         <caption>개인정보 취급방침</caption>
         <tr>
             <td>
-                <textarea readonly></textarea>
+                <textarea readonly><%= tb.getPrivacy() %></textarea>
                 <p>
                     <label><input type="checkbox" name="chk2"/>동의합니다.</label>
                 </p>
