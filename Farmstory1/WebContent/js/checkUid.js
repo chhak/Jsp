@@ -29,7 +29,7 @@ $(document).ready(function(){
 		
 		// 모든 검증이 통과되고 통신시작
 		$.ajax({
-			url: '/Jboard1/user/proc/checkUid.jsp',
+			url: '/Farmstory1/user/proc/checkUid.jsp',
 			type: 'get',
 			data: json,
 			dataType: 'html',
