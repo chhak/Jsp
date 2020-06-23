@@ -3,9 +3,12 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String group = request.getParameter("group");
+	String cate  = request.getParameter("cate");
 	String asideFile  = "./_aside_"+group+".jsp"; 
 %>
-<jsp:include page="<%= asideFile %>"></jsp:include>
+<jsp:include page="<%= asideFile %>">
+	<jsp:param value="<%= cate %>" name="cate"/>
+</jsp:include>
 <script>
 	var download = "";
 
@@ -47,8 +50,8 @@
     </script>
     <div>
         <a href="#" onclick="return onDelete()" class="btnDelete">삭제</a>
-        <a href="./modify.jsp?group=<%= group %>" class="btnModify">수정</a>
-        <a href="./list.jsp?group=<%= group %>" class="btnList">목록</a>
+        <a href="./modify.jsp?group=<%= group %>&cate=<%= cate %>" class="btnModify">수정</a>
+        <a href="./list.jsp?group=<%= group %>&cate=<%= cate %>" class="btnList">목록</a>
     </div>
     
     <!-- 댓글리스트 -->
