@@ -2,7 +2,7 @@
 <%@ include file="../_header.jsp" %>
 <%
 	request.setCharacterEncoding("utf-8");
-	String group = request.getParameter("group");
+	String group = request.getParameter("group");	
 	String asideFile  = "./_aside_"+group+".jsp"; 
 %>
 <jsp:include page="<%= asideFile %>"></jsp:include>
