@@ -108,7 +108,7 @@
             <% for(ArticleBean article : articles){ %>
             <tr>
                 <td><%= listCount-- %></td>
-                <td><a href="./view.jsp?group=<%= group %>&cate=<%= cate %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
+                <td><a href="./view.jsp?seq=<%= article.getSeq() %>&group=<%= group %>&cate=<%= cate %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
                 <td><%= article.getNick() %></td>
                 <td><%= article.getRdate().substring(2, 10) %></td>
                 <td><%= article.getHit() %></td>

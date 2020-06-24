@@ -73,6 +73,7 @@ public class SQL {
 	
 	public final static String INSERT_COMMENT = "INSERT INTO `JBOARD_ARTICLE` SET "
 												+ "`parent`=?, "
+												+ "`cate`=?, "
 												+ "`content`=?, "
 												+ "`uid`=?, "
 												+ "`regip`=?, "
