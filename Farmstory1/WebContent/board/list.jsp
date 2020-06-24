@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <%
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");		
 	String group = request.getParameter("group");	
 	String cate  = request.getParameter("cate");
 	String asideFile  = "./_aside_"+group+".jsp"; 

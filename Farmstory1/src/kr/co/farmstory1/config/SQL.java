@@ -48,6 +48,7 @@ public class SQL {
 	public final static String SELECT_ARTICLE_MAX_SEQ = "SELECT MAX(`seq`) FROM `JBOARD_ARTICLE`";
 	
 	public final static String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET "
+												+ "`cate`=?, "
 												+ "`title`=?, "
 												+ "`content`=?, "
 												+ "`file`=?, "
