@@ -3,7 +3,6 @@
 <%
 	// 로그인여부 세션체크
 	MemberBean mb = (MemberBean) session.getAttribute("member");
-		
 	String code  = request.getParameter("code");
 %>
 <!DOCTYPE html>
