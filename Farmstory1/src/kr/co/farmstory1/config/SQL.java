@@ -22,7 +22,6 @@ public class SQL {
 	public final static String SELECT_MEMBER  = "SELECT * FROM `JBOARD_MEMBER` "
 												+ "WHERE `uid`=? AND `pass`=PASSWORD(?)";
 	
-	
 	// 게시물 관련
 	public final static String SELECT_LATEST_ARTICLE = "(SELECT `seq`, `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='grow' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
 													 + "UNION "

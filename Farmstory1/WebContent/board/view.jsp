@@ -18,7 +18,7 @@
 	String asideFile  = "./_aside_"+group+".jsp";
 	
 	if(mb == null){		
-		response.sendRedirect("./list.jsp?group="+group+"&cate="+cate);
+		response.sendRedirect("./list.jsp?code=101&group="+group+"&cate="+cate);
 		return;
 	}
 
@@ -105,7 +105,15 @@
 	if(download == 'fail'){
 		alert('해당하는 파일이 없습니다.\n관리자에게 문의하시기 바랍니다.');
 	}
+	
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			airMode: true,
+			focus: false
+		});
+	});
 </script>
+
 <section id="board" class="view">
     <h3>글보기</h3>
     <table>
@@ -125,7 +133,7 @@
         <tr>
             <td>내용</td>
             <td>
-                <textarea name="content" readonly><%= article.getContent() %></textarea>
+                <textarea id="summernote" name="content" readonly><%= article.getContent() %></textarea>
             </td>
         </tr>
     </table>
