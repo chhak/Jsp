@@ -24,8 +24,9 @@
 	
 	while(rs.next()){
 		ArticleBean article = new ArticleBean();
-		article.setTitle(rs.getString(1));
-		article.setRdate(rs.getString(2).substring(2, 10));
+		article.setSeq(rs.getInt(1));
+		article.setTitle(rs.getString(2));
+		article.setRdate(rs.getString(3).substring(2, 10));
 		
 		latestList.add(article);
 	}
@@ -36,16 +37,13 @@
 	conn.close();
 %>
 <main>
-    <div class="slider">
-        
-        <img src="./img/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리"/>
-        
+    <div class="slider">        
+        <img src="./img/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리"/>        
         <ul>
             <li><img src="./img/main_slide_img1.jpg" alt="slide1"></li>
             <li><img src="./img/main_slide_img2.jpg" alt="slide2"></li>
             <li><img src="./img/main_slide_img3.jpg" alt="slide3"></li>
         </ul>
-
         <div class="banner">
             <img src="./img/main_banner_txt.png" alt="GRAND OPEN"/>
             <img src="./img/main_banner_tit.png" alt="30% 할인 이벤트"/>
@@ -67,7 +65,7 @@
             	%>
                 <tr>
                     <td>></td>
-                    <td><%= article.getTitle() %></td>
+                    <td><a href="/Farmstory1/board/view.jsp?seq=<%= article.getSeq() %>&group=croptalk&cate=grow"><%= article.getTitle() %></a></td>
                     <td><%= article.getRdate() %></td>
                 </tr>
                 <% } %>
@@ -84,7 +82,7 @@
             	%>
                 <tr>
                     <td>></td>
-                    <td><%= article.getTitle() %></td>
+                    <td><a href="/Farmstory1/board/view.jsp?seq=<%= article.getSeq() %>&group=croptalk&cate=school"><%= article.getTitle() %></a></td>
                     <td><%= article.getRdate() %></td>
                 </tr>
                 <% } %>
@@ -100,7 +98,7 @@
             	%>
                 <tr>
                     <td>></td>
-                    <td><%= article.getTitle() %></td>
+                    <td><a href="/Farmstory1/board/view.jsp?seq=<%= article.getSeq() %>&group=croptalk&cate=croptalk"><%= article.getTitle() %></a></td>
                     <td><%= article.getRdate() %></td>
                 </tr>
                 <% } %>
@@ -138,4 +136,4 @@
         <div></div>
     </div>
 </main>
-<%@ include file="./_footer.jsp" %>        
+<%@ include file="./_footer.jsp" %>

@@ -24,11 +24,11 @@ public class SQL {
 	
 	
 	// 게시물 관련
-	public final static String SELECT_LATEST_ARTICLE = "(SELECT `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='grow' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
+	public final static String SELECT_LATEST_ARTICLE = "(SELECT `seq`, `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='grow' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
 													 + "UNION "
-													 + "(SELECT `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='school' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
+													 + "(SELECT `seq`, `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='school' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
 													 + "UNION "
-													 + "(SELECT `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='croptalk' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5)";
+													 + "(SELECT `seq`, `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='croptalk' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5)";
 	
 	public final static String SELECT_TOTAL_COUNT = "SELECT COUNT(`seq`) FROM `JBOARD_ARTICLE` WHERE `parent`=0 AND `cate`=?";
 	
