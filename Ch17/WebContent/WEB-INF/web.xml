@@ -16,10 +16,20 @@
   	<servlet-class>sub1.HelloServlet</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>Greeting</servlet-name>
+  	<servlet-class>sub1.Greeting</servlet-class>
+  </servlet>
+  
   <!-- 서블릿 액션주소 설정 -->
   <servlet-mapping>
   	<servlet-name>HelloServlet</servlet-name>
   	<url-pattern>/hello.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>Greeting</servlet-name>
+  	<url-pattern>/greeting.do</url-pattern>
   </servlet-mapping>
   
   

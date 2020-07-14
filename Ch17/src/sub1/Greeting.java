@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HelloServlet extends HttpServlet {
+public class Greeting extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		System.out.println("HelloServlet init!!!");
+		System.out.println("Greeting init...");
 	}
 	
 	@Override
@@ -23,7 +23,7 @@ public class HelloServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		requestProc(req, resp);
-	}	
+	}
 	
 	private void requestProc(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		
@@ -32,29 +32,16 @@ public class HelloServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<title>HelloServlet</title>");
+		out.println("<title>Greeting</title>");
 		out.println("<meta charset='utf-8'/>");		
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>Hello Servlet!!!</h1>");
+		out.println("<h1>Greeting Servlet!!!</h1>");
+		out.println("<a href='/Ch17/hello.do'>hello</a>");
 		out.println("<a href='/Ch17/welcome.do'>welcome</a>");
-		out.println("<a href='/Ch17/greeting.do'>greeting</a>");
 		out.println("</body>");		
 		out.println("</html>");
 		
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
