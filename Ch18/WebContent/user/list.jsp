@@ -32,7 +32,7 @@
 		</tr>
 	</table>
 	
-	<a href="#">직원 등록하기</a>
+	<a href="/Ch18/user/register.do">직원 등록하기</a>
 
 </body>
 </html>
