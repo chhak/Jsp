@@ -20,18 +20,20 @@
 			<th>기타</th>
 		</tr>
 		
+		<c:forEach var="member" items="${ requestScope.members }">
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>${member.getUid()}</td>
+			<td>${member.name}</td>
+			<td>${member.hp}</td>
+			<td>${member.pos}</td>
+			<td>${member.dep}</td>
+			<td>${member.rdate}</td>
 			<td>
 				<a href="#">삭제</a>
 				<a href="#">수정</a>
 			</td>
 		</tr>
+		</c:forEach>
 	</table>
 	
 	<a href="/Ch18/user/register.do">직원 등록하기</a>
