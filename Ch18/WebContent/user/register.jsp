@@ -9,7 +9,7 @@
 	<h3>MVC 패턴 데이터베이스 프로그래밍</h3>
 	
 	<h4>직원등록</h4>
-	<form action="#" method="post">
+	<form action="/Ch18/user/register.do" method="post">
 		<table border="1">
 			<tr>
 				<td>아이디</td>
