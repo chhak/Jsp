@@ -17,13 +17,10 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <script>
-	
 	var result = "<%= result %>";
-	
 	if(result == "fail"){
 		alert("로그인에 실패했습니다.\n다시 확인하시기 바랍니다.");
 	}
-	
 </script>
 
 </head>
