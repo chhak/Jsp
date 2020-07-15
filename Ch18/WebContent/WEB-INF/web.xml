@@ -10,6 +10,19 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- JSP 모델2 보안설정 -->
+	<security-constraint>
+		<display-name>JSP Protection</display-name>
+		<web-resource-collection>
+			<web-resource-name>secure pages</web-resource-name>
+			<url-pattern>*.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>nobody</role-name>
+		</auth-constraint>
+	</security-constraint>
+  
+  
   <servlet>
   	<servlet-name>MainController</servlet-name>
   	<servlet-class>controller.MainController</servlet-class>
