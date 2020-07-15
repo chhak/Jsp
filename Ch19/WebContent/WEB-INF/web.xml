@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>Ch19</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- JSP 모델2 보안설정 -->
+  <security-constraint>
+	<display-name>JSP Protection</display-name>
+	<web-resource-collection>
+		<web-resource-name>secure pages</web-resource-name>
+		<url-pattern>*.jsp</url-pattern>
+	</web-resource-collection>
+	<auth-constraint>
+		<role-name>nobody</role-name>
+	</auth-constraint>
+  </security-constraint>
+  
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>free pages</web-resource-name>
+  		<url-pattern>/index.jsp</url-pattern>
+  	</web-resource-collection>
+  </security-constraint>
+  
+  <!-- 필터 등록 -->
+  <filter>
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>filter.EncodingFilter</filter-class>
+  </filter>
+  
+  <!-- 필터 액션주소 맵핑 -->
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>
+  	<url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  
+  <!-- 서블릿 등록 -->
+  <servlet>
+  	<servlet-name>MainController</servlet-name>
+  	<servlet-class>controller.MainController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>MainController</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+</web-app>
