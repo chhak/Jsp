@@ -53,6 +53,7 @@ public class RegisterService implements CommonService {
 				// 4단계
 				psmt.executeUpdate();
 				// 5단계
+				
 				// 6단계
 				psmt.close();
 				conn.close();
