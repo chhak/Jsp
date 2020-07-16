@@ -3,13 +3,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>regiForm</title>
+<title>직원등록</title>
 </head>
 <body>
-	<h3>1.JDBC 프로그래밍</h3>
+	<h3>MVC 패턴 데이터베이스 프로그래밍</h3>
 	
 	<h4>직원등록</h4>
-	<form action="regProc.jsp" method="get">
+	<form action="#" method="post">
 		<table border="1">
 			<tr>
 				<td>아이디</td>
