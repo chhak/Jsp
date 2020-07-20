@@ -44,6 +44,10 @@
   <filter>
   	<filter-name>EncodingFilter</filter-name>
   	<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
   </filter>
   
   <filter-mapping>

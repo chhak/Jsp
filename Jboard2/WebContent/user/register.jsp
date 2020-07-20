@@ -5,6 +5,44 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <link rel="stylesheet" href="/Jboard2/css/style.css"/>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+    	
+    	// 아이디 중복체크
+    	$(document).ready(function(){
+    		
+    		var inputUid = $('input[name=uid]');
+    		
+    		inputUid.focusout(function(){
+    			
+				var uid = $(this).val();
+    			
+    			$.ajax({
+    				url: '/Jboard2/user/checkUid.do?uid='+uid,
+    				type: 'get',
+    				dataType: 'json',
+    				success: function(data){
+    					
+    					alert(data.result)
+    					
+    				}    				
+    			});
+    			
+    			
+    		});
+    		
+    		
+    	});
+    	
+    
+    
+    
+    
+    </script>
+    
 </head>
 <body>
     <div id="wrapper">
