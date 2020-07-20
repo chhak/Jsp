@@ -7,6 +7,19 @@ public class SQL {
 	public final static String SELECT_CHECK_UID  = "SELECT COUNT(`uid`) FROM `JBOARD_MEMBER` WHERE `uid`=?";
 	public final static String SELECT_CHECK_NICK = "SELECT COUNT(`nick`) FROM `JBOARD_MEMBER` WHERE `nick`=?";
 	
+	public final static String INSERT_MEMBER = "INSERT INTO `JBOARD_MEMBER` SET "
+												+ "`uid`=?, "
+												+ "`pass`=PASSWORD(?), "
+												+ "`name`=?, "
+												+ "`nick`=?, "
+												+ "`email`=?, "
+												+ "`hp`=?, "
+												+ "`zip`=?, "
+												+ "`addr1`=?, "
+												+ "`addr2`=?, "
+												+ "`regip`=?, "
+												+ "`rdate`=NOW()";
+	
 	
 	// 게시물 관련
 	public final static String SELECT_TOTAL_COUNT = "SELECT COUNT(`seq`) FROM `JBOARD_ARTICLE` WHERE `parent`=0";
