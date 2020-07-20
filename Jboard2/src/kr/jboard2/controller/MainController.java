@@ -63,15 +63,23 @@ public class MainController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		requestProc(req, resp);
+		try {
+			requestProc(req, resp);	
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		requestProc(req, resp);
+		try {
+			requestProc(req, resp);	
+		}catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 	
-	private void requestProc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
 		String path = req.getContextPath();
 		String uri  = req.getRequestURI();

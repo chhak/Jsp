@@ -8,6 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface CommonService {
 
-	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
+	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception;
 	
 }
