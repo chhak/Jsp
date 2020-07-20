@@ -9,37 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-    	
-    	// 아이디 중복체크
-    	$(document).ready(function(){
-    		
-    		var inputUid = $('input[name=uid]');
-    		
-    		inputUid.focusout(function(){
-    			
-				var uid = $(this).val();
-    			
-    			$.ajax({
-    				url: '/Jboard2/user/checkUid.do?uid='+uid,
-    				type: 'get',
-    				dataType: 'json',
-    				success: function(data){
-    					
-    					if(data.result == 1){
-    						$('.resultId').css('color', 'red').text('이미 사용 중인 아이디 입니다.');
-    					}else{
-    						$('.resultId').css('color', 'green').text('사용 할 수 있는 아이디 입니다.');
-    					}    					
-    					
-    				}    				
-    			});
-    			
-    			
-    		});
-    		
-    		
-    	});
+    <script src="/Jboard2/js/checkUid.js"></script>
+    <script> 	
     	
     
     
