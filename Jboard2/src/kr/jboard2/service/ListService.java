@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +22,26 @@ public class ListService implements CommonService {
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
+		String pg = req.getParameter("pg");
+		
+		// 페이지 관련 변수선언
+		int total = getTotalArticle();
+		int lastPage = getLastPage(total);
+		int currentPage = getCurrentPage(pg);
+		int startLimit = getStartLimit(currentPage);
+		int listCount = total - startLimit;
+		
+		int groupCurrent = 0;
+		int groupStart   = 0;
+		int groupEnd     = 0;
+		
+		
 		// 1,2단계
 		Connection conn = DBConfig.getConnection();
 		
 		// 3단계
 		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
-		psmt.setInt(1, 0);
+		psmt.setInt(1, startLimit);
 		
 		// 4단계
 		ResultSet rs = psmt.executeQuery();
@@ -58,9 +73,68 @@ public class ListService implements CommonService {
 		
 		// 데이터를 view에서 참조하기 위해 request 영역에 저장
 		req.setAttribute("articles", articles);
-		
+		req.setAttribute("lastPage", lastPage);
+		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("listCount", listCount);
 		
 		return "/list.jsp";
+	}// requestProc end
+	
+	
+	public int getTotalArticle() throws Exception  {
+		
+		// 1, 2단계
+		Connection conn = DBConfig.getConnection();
+		// 3단계
+		Statement stmt = conn.createStatement();
+		// 4단계
+		ResultSet rs = stmt.executeQuery(SQL.SELECT_TOTAL_COUNT);
+		// 5단계
+		int total = 0;
+		if(rs.next()) {
+			total = rs.getInt(1);
+		}
+		// 6단계
+		rs.close();
+		stmt.close();
+		conn.close();
+		
+		return total;
 	}
+	
+	public int getLastPage(int total) {
+		
+		int lastPage = 0;
+		
+		if(total%10 == 0) {
+			lastPage = total / 10;
+		}else {
+			lastPage = (total / 10) + 1;
+		}
+		
+		return lastPage;
+	}
+	
+	public int getStartLimit(int currentPage) {
+		int startLimit = (currentPage - 1) * 10;
+		return startLimit;
+	}
+	
+	public int getCurrentPage(String pg) {
+		
+		int currentPage = 0;
+		
+		if(pg == null) {
+			currentPage = 1;
+		}else {
+			currentPage = Integer.parseInt(pg);
+		}
+		
+		return currentPage;
+	}
+	
+	
+	
+	
 
 }
