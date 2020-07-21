@@ -31,10 +31,13 @@ public class ListService implements CommonService {
 		int startLimit = getStartLimit(currentPage);
 		int listCount = total - startLimit;
 		
-		int groupCurrent = 0;
-		int groupStart   = 0;
-		int groupEnd     = 0;
+		int groupCurrent = (int)Math.ceil(currentPage/10.0);
+		int groupStart   = (groupCurrent - 1) * 10 + 1;
+		int groupEnd     = groupCurrent * 10;
 		
+		if(groupEnd > lastPage) {
+			groupEnd = lastPage;
+		}		
 		
 		// 1,2´Ü°è
 		Connection conn = DBConfig.getConnection();
@@ -76,6 +79,8 @@ public class ListService implements CommonService {
 		req.setAttribute("lastPage", lastPage);
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("listCount", listCount);
+		req.setAttribute("groupStart", groupStart);
+		req.setAttribute("groupEnd", groupEnd);
 		
 		return "/list.jsp";
 	}// requestProc end

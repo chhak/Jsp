@@ -39,13 +39,13 @@
 
             <!-- 페이지 네비게이션 -->
             <div class="paging">
-                <a href="#" class="prev">이전</a>
+                <a href="/Jboard2/list.do?pg=${groupStart-1}" class="prev">이전</a>
                 
-                <c:forEach var="i" begin="1" end="${lastPage}">
-                	<a href="/Jboard2/list.do?pg=${i}" class="num current">${i}</a>                
+                <c:forEach var="i" begin="${groupStart}" end="${groupEnd}">
+                	<a href="/Jboard2/list.do?pg=${i}" class="num ${currentPage==i ? 'current':''}">${i}</a>                
 				</c:forEach>
 				     
-                <a href="#" class="next">다음</a>
+                <a href="/Jboard2/list.do?pg=${groupEnd+1}" class="next">다음</a>
             </div>
 
             <!-- 글쓰기 버튼 -->
