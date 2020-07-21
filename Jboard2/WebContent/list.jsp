@@ -12,8 +12,8 @@
             <h3>글목록</h3>
             <article>
                 <p>
-                    홍길동님 반갑습니다.
-                    <a href="./user/login.html" class="logout">[로그아웃]</a>
+                   	${ member.nick }님 반갑습니다.
+                    <a href="/Jboard2/user/logout.do" class="logout">[로그아웃]</a>
                 </p>
                 <table border="0">
                     <tr>

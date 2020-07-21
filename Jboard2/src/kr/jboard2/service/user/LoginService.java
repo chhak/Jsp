@@ -76,7 +76,5 @@ public class LoginService implements CommonService {
 			// GET 요청일때 View를 forward를 위한 view정보 리턴
 			return "/user/login.jsp";			
 		}		
-		
 	}
-
 }
