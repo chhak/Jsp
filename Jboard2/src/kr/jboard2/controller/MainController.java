@@ -90,6 +90,14 @@ public class MainController extends HttpServlet {
 		CommonService instance = (CommonService)instances.get(action);
 		String result = instance.requestProc(req, resp);
 		
+		
+		
+		
+		
+		
+		
+		
+		
 		if(result.startsWith("redirect:")) {
 			// 리다이렉트
 			String redirectURL = result.substring(9);

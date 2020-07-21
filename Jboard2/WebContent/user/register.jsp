@@ -10,12 +10,50 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/Jboard2/js/checkUid.js"></script>
-    <script> 	
-    	
-    
-    
-    
-    
+    <script src="/Jboard2/js/checkPass.js"></script>
+    <script>
+    	//유효성(validation) 검증
+    	$(function(){
+    		$('.register > form').submit(function(){
+           		
+           		// 아이디 중복 여부 확인
+           		if(!isUidOk){
+           			alert('아이디 다시 확인 하십시요.');
+           			return false;	
+           		}
+           		// 비밀번호 일치여부 확인
+       			if(!isPassOk){
+       				alert('비밀번호 다시 확인 하십시요.');
+       				return false;
+           		}
+           		
+           		// 이름 한글여부 확인
+       			if(false){
+       				alert('이름 다시 확인 하십시요.');
+       				return false;
+           		}
+           		
+           		// 별명 중복 여부 확인
+       			if(false){
+       				alert('별명 다시 확인 하십시요.');
+       				return false;
+           		}
+           		
+           		// 이메일 중복 여부 확인
+       			if(false){
+       				alert('이메일 다시 확인 하십시요.');
+       				return false;
+           		}
+           		
+           		// 휴대폰 중복 여부 확인
+       			if(false){
+       				alert('휴대폰 다시 확인 하십시요.');
+       				return false;
+           		}
+           		// 최종 데이터 확인 완료
+           		return true;
+           	});
+    	});
     </script>
     
 </head>
@@ -93,7 +131,7 @@
 
                 <div>
                     <a href="/Jboard2/user/login.do" class="btnCancel">취소</a>
-                    <input type="submit"   class="btnJoin" value="회원가입"/>
+                    <input type="submit" class="btnJoin" value="회원가입"/>
                 </div>
 
             </form>
