@@ -43,20 +43,22 @@
             <!-- 댓글리스트 -->
             <section class="commentList">
                 <h3>댓글목록</h3>
-                <article class="comment">
-                    <span>
-                        <span>길동이</span>
-                        <span>20-05-13</span>
-                    </span>
-                    <textarea name="comment" readonly>댓글 샘플입니다.</textarea>
-                    <div>
-                        <a href="#">삭제</a>
-                        <a href="#">수정</a>
-                    </div>
-                </article>
-                <p class="empty">
-                    등록된 댓글이 없습니다.
-                </p>
+                <c:forEach var="comment" items="${comments}">
+	                <article class="comment">
+	                    <span>
+	                        <span>${comment.nick}</span>
+	                        <span>${comment.rdate}</span>
+	                    </span>
+	                    <textarea name="comment" readonly>${comment.content}</textarea>
+	                    <div>
+	                        <a href="#">삭제</a>
+	                        <a href="#">수정</a>
+	                    </div>
+	                </article>
+                </c:forEach>
+                <c:if test="${empty comments}">
+                	<p class="empty">등록된 댓글이 없습니다.</p>
+                </c:if>
             </section>
 
             <!-- 댓글입력폼 -->
