@@ -11,6 +11,7 @@
 <body>
     <div id="wrapper">
         <section id="board" class="view">
+        	
             <h3>글보기</h3>
             <table>
                 <tr>
@@ -68,10 +69,39 @@
 					
 					var commentForm = $('.commentForm > form');
 					var btnSubmit = $('.commentForm input[type=submit]');
+					var nick  = commentForm.find('input[name=nick]').val();
+					
+					var date = new Date();
+					var rdate = date.getYear()+'-'+date.getMonth()+'-'+date.getDate();
+					
 					
 					btnSubmit.click(function(e){
 						e.preventDefault();
 						
+						// 화면 부분갱신 작업
+						var strHtml = "<article class='comment'>";
+									 + "<span>";
+									 	+ "<span class='nick'></span>";
+									 	+ "<span class='rdate'></span>";
+									 + "</span>";
+									 + "<textarea name='comment' readonly></textarea>";
+									 + "<div>";
+									 	+ "<a href='#'>삭제</a>";
+									 	+ "<a href='#'>수정</a>";
+									 + "</div>";
+								 + "</article>";
+								 
+								 
+						var html = $.parseHTML(strHtml);
+						var dom = $(html);
+						
+						dom.find('.nick').text(nick);
+						dom.find('.rdate').text(rdate);
+						dom.find('textarea').text(comment);
+						
+						$('.commentList').append(dom);
+						
+						// 서버 데이터 전송
 						var parent  = commentForm.find('input[name=parent]').val();
 						var uid     = commentForm.find('input[name=uid]').val();
 						var comment = commentForm.find('textarea').val();
@@ -86,11 +116,11 @@
 							data: json,
 							dataType: 'json',
 							success: function(data){
-								alert(data.result);
+								//alert(data.result);
+								
+								
 							}
-						});
-						
-						
+						});		
 						
 						
 					});
@@ -107,6 +137,7 @@
                 <form action="#" method="post">
                 	<input type="hidden" name="parent" value="${article.seq}" />
                 	<input type="hidden" name="uid" value="${member.uid}" />
+                	<input type="hidden" name="nick" value="${member.nick}" />
                     <textarea name="comment"></textarea>
                     <div>
                         <a href="#" class="btnCancel">취소</a>

@@ -36,7 +36,6 @@ public class CommentService implements CommonService {
 		JsonObject json = new JsonObject();
 		json.addProperty("result", result);
 		
-		
 		return "json:"+json.toString();
 	}
 }
