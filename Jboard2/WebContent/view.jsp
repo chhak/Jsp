@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,19 +14,23 @@
             <table>
                 <tr>
                     <td>제목</td>
-                    <td><input type="text" name="title" value="제목입니다." readonly/></td>
+                    <td><input type="text" name="title" value="${article.title}" readonly/></td>
                 </tr>
-                <tr>
-                    <td>첨부파일</td>
-                    <td>
-                        <a href="#">2020년 상반기 매출자료.xls</a>
-                        <span>7회 다운로드</span>
-                    </td>
-                </tr>
+                
+                <c:if test="${article.file == 1}">
+	                <tr>
+	                    <td>첨부파일</td>
+	                    <td>
+	                        <a href="#">${article.fileBean.oldName}</a>
+	                        <span>${article.fileBean.download}회 다운로드</span>
+	                    </td>
+	                </tr>
+                </c:if>
+                
                 <tr>
                     <td>내용</td>
                     <td>
-                        <textarea name="content" readonly>내용 샘플입니다.</textarea>
+                        <textarea name="content" readonly>${article.content}</textarea>
                     </td>
                 </tr>
             </table>
