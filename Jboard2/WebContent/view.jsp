@@ -78,29 +78,6 @@
 					btnSubmit.click(function(e){
 						e.preventDefault();
 						
-						// 화면 부분갱신 작업
-						var strHtml = "<article class='comment'>";
-									 + "<span>";
-									 	+ "<span class='nick'></span>";
-									 	+ "<span class='rdate'></span>";
-									 + "</span>";
-									 + "<textarea name='comment' readonly></textarea>";
-									 + "<div>";
-									 	+ "<a href='#'>삭제</a>";
-									 	+ "<a href='#'>수정</a>";
-									 + "</div>";
-								 + "</article>";
-								 
-								 
-						var html = $.parseHTML(strHtml);
-						var dom = $(html);
-						
-						dom.find('.nick').text(nick);
-						dom.find('.rdate').text(rdate);
-						dom.find('textarea').text(comment);
-						
-						$('.commentList').append(dom);
-						
 						// 서버 데이터 전송
 						var parent  = commentForm.find('input[name=parent]').val();
 						var uid     = commentForm.find('input[name=uid]').val();
@@ -117,10 +94,32 @@
 							dataType: 'json',
 							success: function(data){
 								//alert(data.result);
-								
-								
 							}
 						});		
+						
+						// 화면 부분갱신 작업
+						var strHtml = "<article class='comment'>"
+									 + "<span>"
+									 	+ "<span class='nick'></span>"
+									 	+ "<span class='rdate'></span>"
+									 + "</span>"
+									 + "<textarea name='comment' readonly></textarea>"
+									 + "<div>"
+									 	+ "<a href='#'>삭제</a>"
+									 	+ "<a href='#'>수정</a>"
+									 + "</div>"
+								 + "</article>";
+								 
+							
+								 
+						var html = $.parseHTML(strHtml);
+						var dom = $(html);
+						
+						dom.find('.nick').text(nick);
+						dom.find('.rdate').text(rdate);
+						dom.find('textarea').text(comment);
+						
+						$('.commentList').append(dom);
 						
 						
 					});
