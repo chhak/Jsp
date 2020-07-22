@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonObject;
+
 import kr.jboard2.config.DBConfig;
 import kr.jboard2.config.SQL;
 import kr.jboard2.controller.CommonService;
@@ -27,10 +29,14 @@ public class CommentService implements CommonService {
 		psmt.setString(3, uid);
 		psmt.setString(4, regip);
 		
-		psmt.executeUpdate();
+		int result = psmt.executeUpdate();
 		psmt.close();
 		conn.close();
 		
-		return "redirect:/Jboard2/view.do?seq="+parent;
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
+		
+		
+		return "json:"+json.toString();
 	}
 }
