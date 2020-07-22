@@ -72,9 +72,20 @@
 					var nick  = commentForm.find('input[name=nick]').val();
 					
 					var date = new Date();
-					var rdate = date.getYear()+'-'+date.getMonth()+'-'+date.getDate();
-					
-					
+				    var year = date.getFullYear();
+				    var month = date.getMonth()+1
+				    var day = date.getDate();
+				    if(month < 10){
+				        month = "0"+month;
+				    }
+				    if(day < 10){
+				        day = "0"+day;
+				    }
+				 
+				    var today = year+'-'+month+'-'+day;
+					var rdate = today.substring(2);
+							
+					// 폼전송 버튼 클릭
 					btnSubmit.click(function(e){
 						e.preventDefault();
 						
@@ -121,13 +132,9 @@
 						
 						$('.commentList').append(dom);
 						
-						
-					});
-					
+					});// 폼전송 버튼 클릭 끝
 					
 				});
-			
-			
 			</script>
 			
             <!-- 댓글입력폼 -->
