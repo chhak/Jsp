@@ -13,7 +13,7 @@ public class LoginService implements CommonService {
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
-		if(req.getMethod().equals("post")) {
+		if(req.getMethod().equals("POST")) {
 			
 			String uid = req.getParameter("uid");
 			String pass = req.getParameter("pass");
