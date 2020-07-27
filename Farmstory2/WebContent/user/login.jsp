@@ -1,13 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>로그인</title>
-    <link rel="stylesheet" href="/Jboard2/css/style.css"/>
-</head>
-<body>
-    <div id="wrapper">
+<%@ include file="../_header.jsp" %>
         <section id="user" class="login">
             <form action="/Jboard2/user/login.do" method="post">
                 <table border="0">
@@ -30,8 +22,5 @@
                 </p>
                 <a href="/Jboard2/user/terms.do">회원가입</a>
             </div>
-
         </section>
-    </div>    
-</body>
-</html>
+  <%@ include file="../_footer.jsp" %>
