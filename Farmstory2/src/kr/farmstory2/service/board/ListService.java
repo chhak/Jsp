@@ -33,7 +33,7 @@ public class ListService implements CommonService {
 		}
 				
 		BoardDAO dao = BoardDAO.getInstance();
-		List<ArticleVO> articles = dao.getArticles(cate, 0);
+		List<ArticleVO> articles = dao.getArticles(cate, startLimit);
 		
 		req.setAttribute("cate", cate);
 		req.setAttribute("articles", articles);
