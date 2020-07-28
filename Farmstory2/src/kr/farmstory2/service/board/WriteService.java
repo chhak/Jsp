@@ -37,8 +37,10 @@ public class WriteService implements CommonService {
 			
 		}else {
 			
-			String cate = req.getParameter("cate");
+			String group = req.getParameter("group");
+			String cate  = req.getParameter("cate");
 			
+			req.setAttribute("group", group);
 			req.setAttribute("cate", cate);
 			
 					

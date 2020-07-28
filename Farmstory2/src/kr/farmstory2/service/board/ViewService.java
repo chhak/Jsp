@@ -9,6 +9,13 @@ public class ViewService implements CommonService {
 
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		
+		String group = req.getParameter("group");
+		String cate  = req.getParameter("cate");
+		
+		req.setAttribute("group", group);
+		req.setAttribute("cate", cate);
+		
 		return "/board/view.jsp";
 	}
 

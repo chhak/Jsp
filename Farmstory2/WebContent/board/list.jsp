@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../_header.jsp" %>
-<%@ include file="./_aside_community.jsp" %>
+<jsp:include page="./_aside_${group}.jsp"/>
 				<section id="board" class="list">
 				    <h3>글목록</h3>
 				    <article>
@@ -37,7 +37,7 @@
 				    </div>
 				
 				    <!-- 글쓰기 버튼 -->
-				    <a href="/Farmstory2/board/write.do?cate=${cate}" class="btnWrite">글쓰기</a>
+				    <a href="/Farmstory2/board/write.do?group=${group}&cate=${cate}" class="btnWrite">글쓰기</a>
 				
 				</section>
 

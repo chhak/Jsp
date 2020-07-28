@@ -14,8 +14,9 @@ public class ListService implements CommonService {
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
-		String cate = req.getParameter("cate");
-		String pg = req.getParameter("pg");
+		String group = req.getParameter("group");
+		String cate  = req.getParameter("cate");
+		String pg    = req.getParameter("pg");
 		
 		// 페이지 관련 변수선언
 		int total = getTotal(cate);
@@ -35,6 +36,7 @@ public class ListService implements CommonService {
 		BoardDAO dao = BoardDAO.getInstance();
 		List<ArticleVO> articles = dao.getArticles(cate, startLimit);
 		
+		req.setAttribute("group", group);
 		req.setAttribute("cate", cate);
 		req.setAttribute("articles", articles);
 		req.setAttribute("lastPage", lastPage);

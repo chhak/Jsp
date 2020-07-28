@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
-<%@ include file="./_aside_community.jsp" %>
+<jsp:include page="./_aside_${group}.jsp"/>
 <section id="board" class="write">
     <h3>글쓰기</h3>
     <article>
