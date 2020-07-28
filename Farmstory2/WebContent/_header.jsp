@@ -34,7 +34,7 @@
                 <li><a href="/Farmstory2/board/list.do"><img src="/Farmstory2/img/head_menu_badge.png" alt="30%"/>장보기</a></li>
                 <li><a href="/Farmstory2/board/list.do">농작물이야기</a></li>
                 <li><a href="/Farmstory2/board/list.do">이벤트</a></li>
-                <li><a href="/Farmstory2/board/list.do">커뮤니티</a></li>
+                <li><a href="/Farmstory2/board/list.do?group=community&cate=notice">커뮤니티</a></li>
             </ul>
         </header>
         

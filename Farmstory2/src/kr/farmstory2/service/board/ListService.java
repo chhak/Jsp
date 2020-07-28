@@ -9,6 +9,11 @@ public class ListService implements CommonService {
 
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		
+		String cate = req.getParameter("cate");
+		
+		req.setAttribute("cate", cate);
+		
 		return "/board/list.jsp";
 	}
 
