@@ -15,12 +15,13 @@
 				            </tr>
 				            <c:forEach var="vo" items="${articles}">
 					            <tr>
-					                <td>${vo.seq}</td>
+					                <td>${listCount}</td>
 					                <td><a href="#">${vo.title}</a>&nbsp;[${vo.comment}]</td>
 					                <td>${vo.nick}</td>
 					                <td>${vo.rdate}</td>
 					                <td>${vo.hit}</td>
 					            </tr>
+					            <c:set var="listCount" value="${listCount = listCount - 1}"/>
 				            </c:forEach>
 				            
 				        </table>
@@ -28,9 +29,11 @@
 				
 				    <!-- 페이지 네비게이션 -->
 				    <div class="paging">
-				        <a href="#" class="prev">이전</a>
-				       	<a href="#" class="num current">1</a>                
-				        <a href="#" class="next">다음</a>
+				        <a href="/Farmstory2/board/list.do?pg=${groupStart-1}" class="prev">이전</a>
+				        <c:forEach var="i" begin="${groupStart}" end="${groupEnd}">
+				       		<a href="/Farmstory2/board/list.do?pg=${i}" class="num ${currentPage==i ? 'current':''}">${i}</a>
+				       	</c:forEach>
+				        <a href="/Farmstory2/board/list.do?pg=${groupEnd+1}" class="next">다음</a>
 				    </div>
 				
 				    <!-- 글쓰기 버튼 -->

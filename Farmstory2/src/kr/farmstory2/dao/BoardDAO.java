@@ -3,6 +3,7 @@ package kr.farmstory2.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,26 @@ public class BoardDAO {
 	}
 	
 	private BoardDAO() {}
+	
+	public int getTotalArticle(String cate) throws Exception {
+		
+		Connection conn = DBConfig.getConnection();
+		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_TOTAL_COUNT);
+		psmt.setString(1, cate);
+		
+		ResultSet rs = psmt.executeQuery();
+		
+		int total = 0;
+		if(rs.next()) {
+			total = rs.getInt(1);
+		}
+		
+		rs.close();
+		psmt.close();
+		conn.close();
+		
+		return total;
+	}
 
 	public List<ArticleVO> getArticles(String cate, int start) throws Exception {
 		
