@@ -29,11 +29,11 @@
 				
 				    <!-- 페이지 네비게이션 -->
 				    <div class="paging">
-				        <a href="/Farmstory2/board/list.do?cate=${cate}&pg=${groupStart-1}" class="prev">이전</a>
+				        <a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}&pg=${groupStart-1}" class="prev">이전</a>
 				        <c:forEach var="i" begin="${groupStart}" end="${groupEnd}">
-				       		<a href="/Farmstory2/board/list.do?cate=${cate}&pg=${i}" class="num ${currentPage==i ? 'current':''}">${i}</a>
+				       		<a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}&pg=${i}" class="num ${currentPage==i ? 'current':''}">${i}</a>
 				       	</c:forEach>
-				        <a href="/Farmstory2/board/list.do?cate=${cate}&pg=${groupEnd+1}" class="next">다음</a>
+				        <a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}&pg=${groupEnd+1}" class="next">다음</a>
 				    </div>
 				
 				    <!-- 글쓰기 버튼 -->
