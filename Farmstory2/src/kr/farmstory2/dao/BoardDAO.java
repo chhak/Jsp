@@ -2,6 +2,9 @@ package kr.farmstory2.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.famstory2.config.DBConfig;
 import kr.famstory2.config.SQL;
@@ -17,7 +20,40 @@ public class BoardDAO {
 	
 	private BoardDAO() {}
 
-	public void getArticles() throws Exception {}
+	public List<ArticleVO> getArticles(String cate, int start) throws Exception {
+		
+		Connection conn = DBConfig.getConnection();
+		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
+		psmt.setString(1, cate);
+		psmt.setInt(2, start);
+		
+		ResultSet rs = psmt.executeQuery();
+		
+		List<ArticleVO> articles = new ArrayList<>();
+		while(rs.next()) {
+			ArticleVO vo = new ArticleVO();
+			vo.setSeq(rs.getInt(1));
+			vo.setParent(rs.getInt(2));
+			vo.setComment(rs.getInt(3));
+			vo.setCate(rs.getString(4));
+			vo.setTitle(rs.getString(5));
+			vo.setContent(rs.getString(6));
+			vo.setFile(rs.getInt(7));
+			vo.setHit(rs.getInt(8));
+			vo.setUid(rs.getString(9));
+			vo.setRegip(rs.getString(10));
+			vo.setRdate(rs.getString(11).substring(2, 10));
+			vo.setNick(rs.getString(12));
+			articles.add(vo);
+		}
+		
+		rs.close();
+		psmt.close();
+		conn.close();
+		
+		return articles;		
+	}
+	
 	public void getArticle() throws Exception {}
 	
 	public void getComments() throws Exception {}

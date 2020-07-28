@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../_header.jsp" %>
 <%@ include file="./_aside_community.jsp" %>
 				<section id="board" class="list">
@@ -12,13 +13,15 @@
 				                <th>날짜</th>
 				                <th>조회</th>
 				            </tr>
-				            <tr>
-				                <td>1</td>
-				                <td><a href="#">제목입니다.</a>&nbsp;[3]</td>
-				                <td>abcd</td>
-				                <td>20-07-12</td>
-				                <td>12</td>
-				            </tr>
+				            <c:forEach var="vo" items="${articles}">
+					            <tr>
+					                <td>${vo.seq}</td>
+					                <td><a href="#">${vo.title}</a>&nbsp;[${vo.comment}]</td>
+					                <td>${vo.nick}</td>
+					                <td>${vo.rdate}</td>
+					                <td>${vo.hit}</td>
+					            </tr>
+				            </c:forEach>
 				            
 				        </table>
 				    </article>

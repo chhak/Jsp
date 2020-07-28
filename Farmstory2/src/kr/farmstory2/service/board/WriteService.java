@@ -18,15 +18,15 @@ public class WriteService implements CommonService {
 			String uid     = req.getParameter("uid");
 			String title   = req.getParameter("title");
 			String content = req.getParameter("content");
-			String file    = req.getParameter("file");
+			String fname   = req.getParameter("fname");
 			String regip = req.getRemoteAddr();
-			int hasFile = file == null ? 0 : 1;
+			int file = (fname.isEmpty()) ? 0 : 1;
 			
 			ArticleVO vo = new ArticleVO();
 			vo.setCate(cate);
 			vo.setTitle(title);
 			vo.setContent(content);
-			vo.setFile(hasFile);
+			vo.setFile(file);
 			vo.setUid(uid);
 			vo.setRegip(regip);
 						
