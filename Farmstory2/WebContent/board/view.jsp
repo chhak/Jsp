@@ -56,10 +56,57 @@
            	</c:if>
         </section>
 
+		<script>
+			$(function(){
+				
+				var btnWrite = $('.commentForm .btnWrite');
+				
+				
+				btnWrite.click(function(e){
+					e.preventDefault();
+					
+					var group   = $('.commentForm input[name=group]').val();
+					var cate    = $('.commentForm input[name=cate]').val();
+					var parent  = $('.commentForm input[name=parent]').val();
+					var uid     = $('.commentForm input[name=uid]').val();
+					var comment = $('.commentForm textarea[name=comment]').val();
+					
+					var jsonData = {'group': group,
+									'cate': cate,
+									'parent': parent,
+									'uid': uid,
+									'comment': comment};
+					
+					
+					$.ajax({
+						url: '/Farmstory2/board/comment.do',
+						type: 'post',
+						data: jsonData,
+						dataType: 'json',
+						success: function(data){
+							
+							if(data.result == 1){
+								alert("댓글 입력 완료");
+							}
+							
+							
+						}
+					});
+					
+					
+					
+					
+				});
+				
+			});
+		
+		
+		</script>
+
         <!-- 댓글입력폼 -->
 		<section class="commentForm">
 			<h3>댓글쓰기</h3>
-			<form action="/Farmstory2/board/comment.do" method="post">
+			<form action="#" method="post">
 				<input type="hidden" name="group" value="${requestScope.group}" />
 				<input type="hidden" name="parent" value="${vo.seq}" />
 				<input type="hidden" name="cate" value="${requestScope.cate}" />

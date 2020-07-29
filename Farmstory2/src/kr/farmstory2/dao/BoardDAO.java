@@ -117,7 +117,7 @@ public class BoardDAO {
 		return vo;		
 	}
 	
-	public void insertComment(ArticleVO vo) throws Exception {
+	public int insertComment(ArticleVO vo) throws Exception {
 		
 		Connection conn = DBConfig.getConnection();
 		PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_COMMENT);
@@ -127,10 +127,12 @@ public class BoardDAO {
 		psmt.setString(4, vo.getUid());
 		psmt.setString(5, vo.getRegip());
 
-		psmt.executeUpdate();
+		int result = psmt.executeUpdate();
 		
 		psmt.close();
-		conn.close();		
+		conn.close();
+		
+		return result;
 	}
 	
 	public List<ArticleVO> getComments(String parent) throws Exception {

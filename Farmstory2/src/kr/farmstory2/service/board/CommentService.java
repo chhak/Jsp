@@ -3,6 +3,8 @@ package kr.farmstory2.service.board;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonObject;
+
 import kr.farmstory2.controller.CommonService;
 import kr.farmstory2.dao.BoardDAO;
 import kr.farmstory2.vo.ArticleVO;
@@ -27,10 +29,12 @@ public class CommentService implements CommonService {
 		vo.setRegip(regip);
 		
 		BoardDAO dao = BoardDAO.getInstance();
-		dao.insertComment(vo);
+		int result = dao.insertComment(vo);
 		
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
 		
-		return "redirect:/Farmstory2/board/view.do?group="+group+"&cate="+cate+"&seq="+parent;
+		return "json:"+json.toString();
 	}
 
 }

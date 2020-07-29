@@ -5,6 +5,7 @@
     <h3>글쓰기</h3>
     <article>
         <form action="/Farmstory2/board/write.do" method="post">
+        	<input type="hidden" name="group" value="${requestScope.group}" />
         	<input type="hidden" name="cate" value="${requestScope.cate}" />
         	<input type="hidden" name="uid" value="${sessionScope.member.uid}" />
             <table>
