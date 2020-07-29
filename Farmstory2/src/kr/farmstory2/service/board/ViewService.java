@@ -1,5 +1,7 @@
 package kr.farmstory2.service.board;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,11 +21,13 @@ public class ViewService implements CommonService {
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		ArticleVO vo = dao.getArticle(seq);
+		List<ArticleVO> comments = dao.getComments(seq);
 		
 		
 		req.setAttribute("group", group);
 		req.setAttribute("cate", cate);
 		req.setAttribute("vo", vo);
+		req.setAttribute("comments", comments);
 		
 		return "/board/view.jsp";
 	}

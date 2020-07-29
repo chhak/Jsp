@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../_header.jsp" %>
 <jsp:include page="./_aside_${group}.jsp"/>
     <section id="board" class="view">
@@ -35,33 +36,42 @@
         <!-- 댓글리스트 -->
         <section class="commentList">
             <h3>댓글목록</h3>
-            <article class="comment">
-                <span>
-                    <span>${comment.nick}</span>
-                    <span>${comment.rdate}</span>
-                </span>
-                <textarea name="comment" readonly>${comment.content}</textarea>
-                <div>
-                    <a href="#">삭제</a>
-                    <a href="#">수정</a>
-                </div>
-            </article>
-           	<p class="empty">등록된 댓글이 없습니다.</p>
+            
+            <c:forEach var="comment" items="${comments}">
+	            <article class="comment">
+	                <span>
+	                    <span>${comment.nick}</span>
+	                    <span>${comment.rdate}</span>
+	                </span>
+	                <textarea name="comment" readonly>${comment.content}</textarea>
+	                <div>
+	                    <a href="#">삭제</a>
+	                    <a href="#">수정</a>
+	                </div>
+	            </article>
+            </c:forEach>
+            
+            <c:if test="${empty comments}">
+           		<p class="empty">등록된 댓글이 없습니다.</p>
+           	</c:if>
         </section>
 
         <!-- 댓글입력폼 -->
-         <section class="commentForm">
-             <h3>댓글쓰기</h3>
-             <form action="#" method="post">
-                 <textarea name="comment"></textarea>
-                 <div>
-                     <a href="#" class="btnCancel">취소</a>
-                     <input type="submit" class="btnWrite" value="작성완료"/>
-                 </div>
-             </form>
-         </section>
-
-</section>
+		<section class="commentForm">
+			<h3>댓글쓰기</h3>
+			<form action="/Farmstory2/board/comment.do" method="post">
+				<input type="hidden" name="group" value="${requestScope.group}" />
+				<input type="hidden" name="parent" value="${vo.seq}" />
+				<input type="hidden" name="cate" value="${requestScope.cate}" />
+				<input type="hidden" name="uid" value="${sessionScope.member.uid}" />
+				<textarea name="comment"></textarea>
+				<div>
+					<a href="#" class="btnCancel">취소</a>
+					<input type="submit" class="btnWrite" value="작성완료"/>
+				</div>
+			</form>
+		</section>
+	</section>
 			
 			<!-- 컨텐츠 내용 끝 -->
             </div>

@@ -117,7 +117,50 @@ public class BoardDAO {
 		return vo;		
 	}
 	
-	public void getComments() throws Exception {}
+	public void insertComment(ArticleVO vo) throws Exception {
+		
+		Connection conn = DBConfig.getConnection();
+		PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_COMMENT);
+		psmt.setInt(1, vo.getParent());
+		psmt.setString(2, vo.getCate());
+		psmt.setString(3, vo.getContent());
+		psmt.setString(4, vo.getUid());
+		psmt.setString(5, vo.getRegip());
+
+		psmt.executeUpdate();
+		
+		psmt.close();
+		conn.close();		
+	}
+	
+	public List<ArticleVO> getComments(String parent) throws Exception {
+		
+		Connection conn = DBConfig.getConnection();
+		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_COMMENTS);
+		psmt.setString(1, parent);
+		
+		ResultSet rs = psmt.executeQuery();
+		List<ArticleVO> comments = new ArrayList<>();
+		
+		while(rs.next()) {
+			ArticleVO comment = new ArticleVO();
+			
+			comment.setSeq(rs.getInt(1));
+			comment.setContent(rs.getString(6));
+			comment.setUid(rs.getString(9));
+			comment.setRegip(rs.getString(10));
+			comment.setRdate(rs.getString(11));
+			comment.setNick(rs.getString(12));
+			
+			comments.add(comment);
+		}
+		
+		rs.close();
+		psmt.close();
+		conn.close();
+		
+		return comments;		
+	}
 	
 	public void insertArticle(ArticleVO vo) throws Exception {
 		

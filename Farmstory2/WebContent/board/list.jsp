@@ -16,7 +16,7 @@
 				            <c:forEach var="vo" items="${articles}">
 					            <tr>
 					                <td>${listCount}</td>
-					                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}">${vo.title}</a>&nbsp;[${vo.comment}]</td>
+					                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}&seq=${vo.seq}">${vo.title}</a>&nbsp;[${vo.comment}]</td>
 					                <td>${vo.nick}</td>
 					                <td>${vo.rdate}</td>
 					                <td>${vo.hit}</td>
