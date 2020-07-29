@@ -10,6 +10,7 @@ import java.util.List;
 import kr.famstory2.config.DBConfig;
 import kr.famstory2.config.SQL;
 import kr.farmstory2.vo.ArticleVO;
+import kr.farmstory2.vo.FileVO;
 
 public class BoardDAO {
 	
@@ -75,7 +76,46 @@ public class BoardDAO {
 		return articles;		
 	}
 	
-	public void getArticle() throws Exception {}
+	public ArticleVO getArticle(String seq) throws Exception {
+		
+		Connection conn = DBConfig.getConnection();
+		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_ARTICLE);
+		psmt.setString(1, seq);
+		
+		ResultSet rs = psmt.executeQuery();
+		
+		ArticleVO vo = new ArticleVO();
+		FileVO fv = new FileVO();
+		
+		if(rs.next()) {
+			
+			vo.setSeq(rs.getInt(1));
+			vo.setParent(rs.getInt(2));
+			vo.setComment(rs.getInt(3));
+			vo.setCate(rs.getString(4));
+			vo.setTitle(rs.getString(5));
+			vo.setContent(rs.getString(6));
+			vo.setFile(rs.getInt(7));
+			vo.setHit(rs.getInt(8));
+			vo.setUid(rs.getString(9));
+			vo.setRegip(rs.getString(10));
+			vo.setRdate(rs.getString(11));
+			
+			fv.setSeq(rs.getInt(12));
+			fv.setParent(rs.getInt(13));
+			fv.setOldName(rs.getString(14));
+			fv.setNewName(rs.getString(15));
+			fv.setDownload(rs.getInt(16));
+			fv.setRdate(rs.getString(17));		
+			vo.setFv(fv);
+		}
+		
+		rs.close();
+		psmt.close();
+		conn.close();
+		
+		return vo;		
+	}
 	
 	public void getComments() throws Exception {}
 	

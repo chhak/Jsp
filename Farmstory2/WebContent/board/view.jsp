@@ -7,15 +7,15 @@
         <table>
             <tr>
                 <td>제목</td>
-                <td><input type="text" name="title" value="${article.title}" readonly/></td>
+                <td><input type="text" name="title" value="${vo.title}" readonly/></td>
             </tr>
             
-            <c:if test="${article.file == 1}">
+            <c:if test="${vo.file == 1}">
              <tr>
                  <td>첨부파일</td>
                  <td>
-                     <a href="#">${article.fileBean.oldName}</a>
-                     <span>${article.fileBean.download}회 다운로드</span>
+                     <a href="#">${vo.fv.oldName}</a>
+                     <span>${vo.fv.download}회 다운로드</span>
                  </td>
              </tr>
             </c:if>
@@ -23,7 +23,7 @@
             <tr>
                 <td>내용</td>
                 <td>
-                    <textarea name="content" readonly>${article.content}</textarea>
+                    <textarea name="content" readonly>${vo.content}</textarea>
                 </td>
             </tr>
         </table>

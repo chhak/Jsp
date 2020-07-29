@@ -14,6 +14,16 @@ public class ArticleVO {
 	private String rdate;
 	private String nick;
 	
+	private FileVO fv;
+
+	public FileVO getFv() {
+		return fv;
+	}
+	
+	public void setFv(FileVO fv) {
+		this.fv = fv;
+	}
+	
 	public int getSeq() {
 		return seq;
 	}
