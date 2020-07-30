@@ -14,7 +14,6 @@ public class IndexService implements CommonService {
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
-		
 		BoardDAO dao = BoardDAO.getInstance();
 		
 		List<ArticleVO> latestList = dao.getLatest();

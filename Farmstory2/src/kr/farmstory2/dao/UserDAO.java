@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import kr.famstory2.config.DBConfig;
-import kr.famstory2.config.SQL;
+import kr.farmstory2.config.DBConfig;
+import kr.farmstory2.config.SQL;
 import kr.farmstory2.vo.MemberVO;
 import kr.farmstory2.vo.TermsVO;
 

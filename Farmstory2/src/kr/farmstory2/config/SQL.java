@@ -1,8 +1,8 @@
-package kr.famstory2.config;
+package kr.farmstory2.config;
 
 public class SQL {
 
-	// ÌöåÏõê Í¥ÄÎ†®
+	// ?öå?õê Í¥??†®
 	public final static String SELECT_TERMS = "SELECT * FROM `JBOARD_TERMS`";
 	public final static String SELECT_CHECK_UID  = "SELECT COUNT(`uid`) FROM `JBOARD_MEMBER` WHERE `uid`=?";
 	public final static String SELECT_CHECK_NICK = "SELECT COUNT(`nick`) FROM `JBOARD_MEMBER` WHERE `nick`=?";
@@ -22,7 +22,7 @@ public class SQL {
 	public final static String SELECT_MEMBER  = "SELECT * FROM `JBOARD_MEMBER` "
 												+ "WHERE `uid`=? AND `pass`=PASSWORD(?)";
 	
-	// Í≤åÏãúÎ¨º Í¥ÄÎ†®
+	// Í≤åÏãúÎ¨? Í¥??†®
 	public final static String SELECT_LATEST_ARTICLE = "(SELECT `seq`, `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='grow' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "
 													 + "UNION "
 													 + "(SELECT `seq`, `title`, `rdate` FROM `JBOARD_ARTICLE` WHERE `cate`='school' AND `parent`=0 ORDER BY `seq` DESC LIMIT 5) "

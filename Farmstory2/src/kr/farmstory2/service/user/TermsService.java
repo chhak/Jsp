@@ -3,7 +3,7 @@ package kr.farmstory2.service.user;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.famstory2.config.DBConfig;
+import kr.farmstory2.config.DBConfig;
 import kr.farmstory2.controller.CommonService;
 import kr.farmstory2.dao.UserDAO;
 import kr.farmstory2.vo.TermsVO;

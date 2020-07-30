@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.famstory2.config.DBConfig;
-import kr.famstory2.config.SQL;
+import kr.farmstory2.config.DBConfig;
+import kr.farmstory2.config.SQL;
 import kr.farmstory2.vo.ArticleVO;
 import kr.farmstory2.vo.FileVO;
 

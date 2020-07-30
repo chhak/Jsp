@@ -1,4 +1,4 @@
-package kr.famstory2.config;
+package kr.farmstory2.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
