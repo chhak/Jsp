@@ -22,6 +22,31 @@ public class BoardDAO {
 	
 	private BoardDAO() {}
 	
+	public List<ArticleVO> getLatest() throws Exception {
+		
+		Connection conn = DBConfig.getConnection();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(SQL.SELECT_LATEST_ARTICLE);
+		
+		List<ArticleVO> latestList = new ArrayList<ArticleVO>();
+		
+		while(rs.next()) {
+			ArticleVO article = new ArticleVO();
+			article.setSeq(rs.getInt(1));
+			article.setTitle(rs.getString(2));
+			article.setRdate(rs.getString(3).substring(2, 10));
+			
+			latestList.add(article);
+		}
+		
+		rs.close();
+		stmt.close();
+		conn.close();
+		
+		return latestList;
+	}
+	
+	
 	public int getTotalArticle(String cate) throws Exception {
 		
 		Connection conn = DBConfig.getConnection();
@@ -163,6 +188,21 @@ public class BoardDAO {
 		
 		return comments;		
 	}
+	
+	public int modifyComment(String content, String seq) throws Exception {
+		
+		Connection conn = DBConfig.getConnection();
+		PreparedStatement psmt = conn.prepareStatement(SQL.UPDATE_COMMENT);
+		psmt.setString(1, content);
+		psmt.setString(2, seq);
+		
+		int result = psmt.executeUpdate();
+		psmt.close();
+		conn.close();
+		
+		return result;
+	}
+	
 	
 	public void insertArticle(ArticleVO vo) throws Exception {
 		

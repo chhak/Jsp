@@ -27,93 +27,35 @@
             <img src="./img/main_latest1_tit.png" alt="텃밭가꾸기"/>
             <img src="./img/main_latest1_img.jpg" alt="이미지1">
             <table border="0">
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
+            	
+	                <tr>
+	                    <td>></td>
+	                    <td>안녕하세요. 반갑습니다.</td>
+	                    <td>20-05-14</td>
+	                </tr>
+                
             </table>
         </div>
         <div>
             <img src="./img/main_latest2_tit.png" alt="귀농학교"/>
             <img src="./img/main_latest2_img.jpg" alt="이미지2">
             <table border="0">
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
+	                <tr>
+	                    <td>></td>
+	                    <td>안녕하세요. 반갑습니다.</td>
+	                    <td>20-05-14</td>
+	                </tr>
             </table>
         </div>
         <div>
             <img src="./img/main_latest3_tit.png" alt="농작물이야기"/>
             <img src="./img/main_latest3_img.jpg" alt="이미지3">
             <table border="0">
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td>안녕하세요. 반갑습니다.</td>
-                    <td>20-05-14</td>
-                </tr>
+	                <tr>
+	                    <td>></td>
+	                    <td>안녕하세요. 반갑습니다.</td>
+	                    <td>20-05-14</td>
+	                </tr>
             </table>
         </div>                
     </div>

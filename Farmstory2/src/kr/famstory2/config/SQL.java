@@ -84,6 +84,8 @@ public class SQL {
 												+ "`regip`=?, "
 												+ "`rdate`=NOW()";
 	
+	public final static String UPDATE_COMMENT = "UPDATE `JBOARD_ARTICLE` SET `content`=? WHERE `seq`=?";
+	
 	public final static String UPDATE_COMMENT_COUNT = "UPDATE `JBOARD_ARTICLE` SET `comment` = `comment` + 1 " 
 													+ "WHERE `seq`=?";
 	
